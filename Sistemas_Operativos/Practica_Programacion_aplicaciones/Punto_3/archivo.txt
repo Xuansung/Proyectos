@@ -1,0 +1,26 @@
+En esta práctica vamos a desarrollar una herramienta utilizando directamente
+algunas de las funciones de la librería del sistema. Estas funciones suelen estar
+escritas en C, pero no estamos obligados a usar este lenguaje para emplearlas. En
+su lugar, veremos cómo podemos usar C++ para desarrollar nuestro programa
+de forma más sencilla y segura.
+
+Contenidos
+1. Introducción 2
+2. Opciones recomendadas del compilador 2
+2.1. Opciones para avisos y errores de compilación . . . . . . . . . . . . . . . . . . 2
+2.2. Opciones para sanear el código . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+2.2.1. Undefined behaviors en C++ . . . . . . . . . . . . . . . . . . . . . . . 4
+2.2.2. Flujo de trabajo recomendado para evitar undefined behaviors . . . . . 5
+2.3. Pasar opciones al compilador . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+3. Aprovecha las ventajas de C++ todo lo posible 6
+3.1. Cadenas de caracteres . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+3.2. Buffers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+4. Descriptores de archivo y otros recursos del sistema 9
+4.1. SafeFD más seguro . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+5. Manejo de errores 14
+5.1. Propagación de códigos de error . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+5.2. Obligar a comprobar los errores . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+5.3. Propagación de errores con std::expected . . . . . . . . . . . . . . . . . . . 19
+6. Argumentos de la línea de comandos 22
+6.1. Función parse_args() . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+7. Evita el mal uso de los espacios de nombres 

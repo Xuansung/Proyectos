@@ -1,0 +1,16 @@
+graph {
+ node0 [pos="68,-21!"];
+ node1 [pos="57,60!"];
+ node2 [pos="82,-60!"];
+ node3 [pos="-33,54!"];
+ node4 [pos="-44,11!"];
+ node5 [pos="-5,26!"];
+ node6 [pos="-27,3!"];
+ node7 [pos="90,83!"];
+ node8 [pos="27,43!"];
+ node9 [pos="-72,21!"];
+  node9 -- node2;
+  node2 -- node7;
+  node7 -- node3;
+  node3 -- node9;
+}

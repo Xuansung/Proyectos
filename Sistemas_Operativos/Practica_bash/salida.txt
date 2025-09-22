@@ -1,0 +1,1 @@
+Opciones -sm y -sg incompatibles.

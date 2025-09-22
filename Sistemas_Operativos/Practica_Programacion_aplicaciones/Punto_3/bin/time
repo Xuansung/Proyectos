@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Mostrar la fecha y hora actual
+echo "Fecha y hora actual: $(date)"
+
+# Mostrar los valores de las variables de entorno configuradas por docserver
+echo "REQUEST_PATH: ${REQUEST_PATH:-No configurada}"
+echo "SERVER_BASEDIR: ${SERVER_BASEDIR:-No configurada}"
+echo "REMOTE_PORT: ${REMOTE_PORT:-No configurada}"
+echo "REMOTE_IP: ${REMOTE_IP:-No configurada}"

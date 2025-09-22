@@ -1,0 +1,39 @@
+PROGRAM: ./pruebas/codigo.cc
+
+DESCRIPTION:
+/*
+int main () {
+std :: cout << " Introduzca el numero de factoriales a calcular : ";
+int limit ;
+std :: cin >> limit ;
+for (int i = 1; i <= limit ; ++ i ) {
+std :: cout << i << "! = " << ( double ) Factorial ( i ) << std :: endl ;
+}
+return 0;
+}
+*/
+
+VARIABLES :
+[Line 24 ] INT: factorial = 1
+[Line 25 ] DOUBLE: doble = 6.8
+[Line 37 ] INT: limit
+
+STATEMENTS:
+[Line 26 ] LOOP: while
+[Line 28 ] LOOP: for
+[Line 39 ] LOOP: for
+
+MAIN: 
+True
+
+COMMENTS :
+[Line 14 ]  Returns the factorial of the argument
+[Line 26 ] Bucle while que revisa si doble es igual a 0.
+[Line 34 - 44 ] DESCRIPTION
+
+CASES:
+[Line 17] case: 0
+[Line 18] case: 1
+[Line 19] case: 3
+[Line 20] case: 4
+[Line 21] case: 'a'

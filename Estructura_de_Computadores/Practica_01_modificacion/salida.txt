@@ -1,0 +1,3 @@
+VCD info: dumpfile alu_mod.vcd opened for output.
+Encontradas           0 operaciones erroneas
+alu_tb_modPE104.v:50: $finish called at 4096000 (10ps)

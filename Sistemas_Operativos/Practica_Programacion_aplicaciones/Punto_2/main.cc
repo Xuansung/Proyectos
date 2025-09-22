@@ -1,0 +1,305 @@
+
+// Forma de compilar el programa: g++ -std=c++23 -o docserver main.cc safefd.cc safemap.cc
+//Librería
+#include <cstring> // Uso del std::strerror()
+#include <cerrno> // Uso del acceso a errno, que contiene el código de error de la última función.
+#include <string>
+#include <iostream>
+#include <sstream> // Uso de cadenas como flujos, como std::ostringstream.
+#include <vector>
+#include <system_error>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <expected> // Uso de la clase std::expected para manejo de errores.
+#include <fcntl.h> // Proporciona constantes y funciones para control de archivos como open().
+#include <string_view> // Uso de la clase std::string_view trabajar con cadenas sin copiar datos.
+#include <sys/stat.h> // Uso para la función fstat() para obtener información de archivos.
+#include <unistd.h> // Acceso a las funciones POSIX estándar como close().
+#include <sys/mman.h> // Proporciona funciones par amapear arcihvos en memoria como mmap() y munmap().
+#include "safemap.h" // Cabecera de la clase SafeMap.
+#include "safefd.h" // Cabecera de la clase SafeFD
+
+// Errores
+enum class parse_args_errors {
+  missing_argument,
+  unknown_option,
+};
+// Opciones del programa
+struct program_options {
+  bool help = false;
+  bool verbose = false;
+  std::string output_filename;
+  uint16_t port = 8080; // Puerto por defecto
+};
+
+// Leer las variables de entorno
+std::string get_env(const std::string& nombre) {
+  char* valor = std::getenv(nombre.c_str());
+  if (valor) {
+    return std::string{valor};
+  }
+  return {};
+}
+
+std::expected<program_options, parse_args_errors> parse_args(int argc, char* argv[]) {
+  // vector que contiene todos los argumentos de la línea de comandos, excluyendo el nombre del programa.
+  std::vector<std::string_view> args(argv + 1, argv + argc);
+  program_options options;
+
+  for (auto it = args.begin(), end = args.end(); it != end; ++it) {
+    if (*it == "-h" || *it == "--help") {
+    options.help = true;
+    } else if (*it == "-v" || *it == "--verbose") {
+        options.verbose = true;
+    } else if (*it == "-p" || *it == "--port") {
+      if (it++ == args.end()) {
+        return std::unexpected(parse_args_errors::missing_argument);
+        }
+        try {
+          int port = std::stoi(std::string(*it));
+          if (port < 1 || port > 65535) {
+            return std::unexpected(parse_args_errors::unknown_option);
+          }
+          options.port = static_cast<uint16_t>(port);
+        } catch (...) {
+          return std::unexpected(parse_args_errors::unknown_option);
+        }
+    } else if ((*it).starts_with("-")) {
+        return std::unexpected(parse_args_errors::unknown_option);
+    } else {
+      if (!options.output_filename.empty()) {
+        return std::unexpected(parse_args_errors::unknown_option);
+      }
+      options.output_filename = std::string{*it};
+    }
+  }
+  if (!options.help && options.output_filename.empty()) {
+    return std::unexpected(parse_args_errors::missing_argument);
+  }
+
+  return options;
+}
+ 
+void Mostrar_Ayuda() {
+  std::cout << "Modo de uso: ./docserver [-h | --help] [-v | --verbose] [-p PORT | --port PORT] ARCHIVO" << std::endl;
+  std::cout << "Este programa muestra el tamaño del ARCHIVO y luego su contenido." << std::endl;
+  std::cout << "Content-Length: <TAMAÑO>" << std::endl;
+  std::cout << "<contenido del archivo...>" << std::endl;
+  std::cout << "[-h | --help] muestra la ayuda." << std::endl;
+  std::cout << "[-p PORT | --port PORT] especifica el puerto en el que el servidor escuchará conexiones." << std::endl;
+  std::cout << "[-v | --verbose] activa el modo detallado. En este modo, adicionalmente mensajes " << std::endl;
+  std::cout << "informativos por la salida de error." << std::endl;
+}
+
+std::expected<SafeFD, int> make_socket(uint16_t port, bool verbose) {
+  if (verbose) {
+    std::cerr << "socket: creando socket." << std::endl;
+  }
+  int fd = socket(AF_INET, SOCK_STREAM, 0);
+  if (fd < 0) {
+    return std::unexpected(errno);
+  }
+
+  sockaddr_in local_address{};
+  local_address.sin_family = AF_INET;
+  local_address.sin_port = htons(port);
+  local_address.sin_addr.s_addr = INADDR_ANY;
+
+  if (bind(fd, reinterpret_cast<const sockaddr*>(&local_address), sizeof(local_address)) < 0) {
+    int err = errno;
+    close(fd);
+    return std::unexpected(err);
+  }
+  if (verbose) {
+    std::cerr << "bind: asignado al puerto " << port << std::endl;
+  }
+  return SafeFD{fd};
+}
+
+int listen_connection(const SafeFD& socket, bool verbose) {
+  if (verbose) {
+    std::cerr << "escuchando: poniendo el socket a la escucha." << std::endl;
+  }
+  if (listen(socket.getFD(), SOMAXCONN) < 0) {
+    return errno;
+  }
+  return 0;
+}
+
+std::expected<SafeFD, int> accept_connection(const SafeFD& socket, sockaddr_in& dir_cliente, bool verbose) {
+  socklen_t tam_direccion_cliente = sizeof(dir_cliente);
+  int nuevo_fd = accept(socket.getFD(), reinterpret_cast<sockaddr*>(&dir_cliente),&tam_direccion_cliente);
+  if (nuevo_fd < 0) {
+    return std::unexpected(errno);
+  }
+  if (verbose) {
+    char cliente_ip[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &dir_cliente.sin_addr, cliente_ip, sizeof(cliente_ip));
+    std::cerr << "aceptado: conexión aceptada desde " << cliente_ip << ":" << ntohs(dir_cliente.sin_port) << std::endl;
+  }
+  return SafeFD{nuevo_fd};
+}
+
+int send_response(const SafeFD& socket, std::string_view header, std::string_view body = {}, bool verbose = false) {
+  std::string response{header};
+  response += "\n";
+  if (!body.empty()) {
+    response += "\n";
+    response += body;
+  }
+
+  size_t total_sent = 0;
+  while (total_sent < response.size()) {
+    ssize_t sent = send(socket.getFD(), response.data() + total_sent, response.size() - total_sent, 0);
+    if (sent < 0) {
+      return errno;
+    }
+    total_sent += sent;
+  }
+
+  if (verbose) {
+    std::cerr << "enviado: respuesta enviada\n";
+  }
+  return 0;
+}
+
+std::expected<SafeMap, int> read_all(const std::string& path, bool verbose) {
+  if (verbose) {
+    std::cerr << "open: se abre el archivo /" << path << "/" << std::endl;
+  }
+  int fd = open(path.c_str(), O_RDONLY);
+  if (fd < 0) {
+    return std::unexpected(errno);
+  }
+
+  struct stat st;
+  if (fstat(fd,&st) != 0) {
+    int err = errno;
+    close(fd);
+    return std::unexpected(err);
+  }
+
+  int length = st.st_size;
+
+  if (verbose) {
+    std::cerr << "mmap: se mape el archivo /" << path << "/ en memoria" << std::endl;
+  }
+// Se mapea el archivo completo en memoria para solo lectura y de forma privada.
+  void* mem = mmap(NULL, length, PROT_READ, MAP_PRIVATE, fd, 0);
+  if (mem == MAP_FAILED) {
+    int err = errno;
+    close(fd);
+    return std::unexpected(err);
+  }
+// Opcionalmente, se puede cerrar el descriptor del archivo si ya no se necesita.
+close(fd);
+
+SafeMap smap(mem, length);
+
+return smap;
+}
+
+int main (const int argc, char* argv[]) {
+  auto options = parse_args(argc, argv); 
+if (!options.has_value()) {
+// Usar options.error() para comprobar el motivo del error...
+if (options.error() == parse_args_errors::missing_argument) {
+// Mostrar mensaje de error por falta de argumento...
+  std::cerr << "Error: argumento perdido" << std::endl;
+} else if (options.error() == parse_args_errors::unknown_option) {
+    // Mostrar mensaje de error por opción desconocida...
+    std::cerr << "Error: opción desconocida" << std::endl;
+  }
+  return 1;
+}
+// Usar options-> para acceder a las opciones...
+if (options->help) {
+  Mostrar_Ayuda();
+  return 0;
+}
+
+bool verbose = options->verbose;
+
+uint16_t port = options->port;
+if(port == 8080) {
+  std::string env_port = get_env("DOCSERVER_PORT");
+  if (!env_port.empty()) {
+    try {
+      int env_port_num = std::stoi(env_port);
+      if (env_port_num >= 1 && env_port_num <= 65535) {
+        port = static_cast<uint16_t>(env_port_num);
+      } else {
+        std::cerr << "Error: Puerto en DOCSERVER_PORT inválido. Usando puerto por defecto 8080." << std::endl;
+      }
+    } catch (...) {
+        std::cerr << "Error: Puert en DOCSERVER_PORT inválido. Usando puerto por defecto 8080." << std::endl;
+    }
+  }
+}
+if (options.value().output_filename.empty()) {
+  std::cerr << "Error: archivo no especificado." << std::endl;
+  return 1;
+}
+
+auto resultado_socket = make_socket(port, verbose);
+if(!resultado_socket.has_value()) {
+  std::cerr << "Error al crear el socket: " << std::strerror(resultado_socket.error()) << std::endl;
+  return 1;
+}
+SafeFD& server_socket = resultado_socket.value();
+
+int listen_err = listen_connection(server_socket, verbose);
+if (listen_err != 0) {
+  std::cerr << "Error en listen: " << std::strerror(listen_err) << std::endl;
+  return 1;
+}
+
+while (true) {
+  sockaddr_in dir_cliente{};
+  auto resultado_cliente = accept_connection(server_socket, dir_cliente, verbose);
+  if(!resultado_cliente.has_value()) {
+    std::cerr << "Error en accept: " << std::strerror(resultado_cliente.error()) << std::endl;
+    continue;
+  }
+  SafeFD& cliente_socket = resultado_cliente.value();
+
+  auto resultado_archivo = read_all(options-> output_filename, verbose);
+  if (!resultado_archivo.has_value()) {
+    int err = resultado_archivo.error();
+    std::string header;
+    if (err == EACCES) {
+      header = "403 Forbidden";
+    } else if ( err == ENOENT) {
+      header = "404 Not Found";
+    } else {
+      std::cerr << "Error al leer el archivo (" << err << "): " << std::strerror(err) << std::endl;
+      return 1;
+    }
+    int send_err = send_response(cliente_socket, header, {}, verbose);
+    if (send_err != 0 && send_err != ECONNRESET) {
+      std::cerr << "Error al enviar respuesta: " << std::strerror(send_err) << std::endl;
+      return 1;
+    }
+    continue;
+  }
+  SafeMap& smap = resultado_archivo.value();
+  std::string_view content = smap.getSV();
+  std::ostringstream oss;
+  oss << "Content-Length: " << content.size();
+  std::string header = oss.str();
+
+  int send_err = send_response(cliente_socket, header, content, verbose);
+  if (send_err != 0) {
+    if (send_err == ECONNRESET) {
+      std::cerr << "Conexión cerrada por el cliente antes de recibir la respuesta" << std::endl;
+    } else {
+        std::cerr << "Error al enviar respuesta: " << std::strerror(send_err) << std::endl;
+        return 1;
+    }
+  } 
+}
+return 0;
+}
+
+

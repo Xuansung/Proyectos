@@ -1,0 +1,25 @@
+[1mInformación de la sesión de Ubuntu-18-CyA-XSN(B[m
+[1mSID    PGID     PID      USER      TTY  CMD(B[m
+       1        1        1     root        ? /sbin/init
+     396        1      396     root        ? /usr/lib/systemd/systemd-journald
+     447        1      447     root        ? /sbin/multipathd
+     460        1      460     root        ? /usr/lib/systemd/systemd-udevd
+     656        1      656 systemd+        ? /usr/lib/systemd/systemd-networkd
+     660        1      660 systemd+        ? /usr/lib/systemd/systemd-resolved
+     662        1      662 systemd+        ? /usr/lib/systemd/systemd-timesyncd
+     784        1      784 message+        ? @dbus-daemon
+     789        1      789  polkitd        ? /usr/lib/polkit-1/polkitd
+     790        1      790     root        ? /usr/sbin/qemu-ga
+     795        1      795     root        ? /usr/lib/systemd/systemd-logind
+     796        1      796     root        ? /usr/libexec/udisks2/udisksd
+     815        1      815     root        ? /usr/bin/python3
+     834        1      834   syslog        ? /usr/sbin/rsyslogd
+     838        1      838     root        ? /usr/sbin/ModemManager
+     916        1      916     root        ? /usr/sbin/cron
+     926        1      926     root     tty1 /sbin/agetty
+     928        1      928     root        ? sshd:
+    1025        1     1025     root        ? /usr/libexec/upowerd
+   92609        1    92609     root        ? sshd:
+   92614        1    92614  usuario        ? /usr/lib/systemd/systemd
+   92723        1    92723  usuario        ? -bash
+   92912        2    92912  usuario    pts/3 /usr/bin/bash
