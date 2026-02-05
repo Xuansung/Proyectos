@@ -1,4 +1,4 @@
-module uc(input wire q0,qu, start, clk, input reg [3:0] M, A, input reg [2:0] Q, output wire CargaQ, CargaM, ResetA, CargaA,ResetQu, DesplazaA,Suma, Resta, Fin)
+module uc(input wire q0,qu, start, clk, input wire [3:0] M, A, input wire [2:0] Q, output wire CargaQ, CargaM, ResetA, CargaA,ResetQu, DesplazaA,Suma, Resta, Fin);
  reg[2:0] state, nextstate;
  
  parameter S0 = 3'b000;
@@ -10,12 +10,12 @@ module uc(input wire q0,qu, start, clk, input reg [3:0] M, A, input reg [2:0] Q,
  parameter S6 = 3'b110;
  parameter S7 = 3'b111;
  
- always @(posedge clk, posedge start) begin
+ always @(posedge clk, posedge start)
  if (start)
 	state <= 0;
  else
 	state <= nextstate;
- end
+
  
  always @(*) // (*) significa cualquier cambio en alguna variable del bloque
 	case (state)
@@ -40,5 +40,5 @@ module uc(input wire q0,qu, start, clk, input reg [3:0] M, A, input reg [2:0] Q,
 	assign DesplazaA = ((state == S2) | (state == S4) | (state == S6))? 1:0;
 	assign Fin = (state == S7)? 1:0;
 
-end
+endmodule
 	
