@@ -1,4 +1,4 @@
-module uc(input wire q0,qu, start, clk, input wire [3:0] M, A, input wire [2:0] Q, output wire CargaQ, CargaM, ResetA, CargaA,ResetQu, DesplazaA,Suma, Resta, Fin);
+module uc(input wire q0,qu, start, clk, input wire [3:0] M, A, input wire [2:0] Q, output wire CargaQ, CargaM, ResetA, CargaA, ResetQu, DesplazaA,Suma, Resta, Fin);
  reg[2:0] state, nextstate;
  
  parameter S0 = 3'b000;
@@ -29,16 +29,17 @@ module uc(input wire q0,qu, start, clk, input wire [3:0] M, A, input wire [2:0] 
 		S7: nextstate = S7;
 		default: nextstate = S0;
 	endcase
-	
+  wire en_operacion = (state==S1) | (state==S3) | (state==S5);
+		
 	assign ResetA = (state == S0)? 1:0;
 	assign ResetQu = (state == S0)? 1:0;
 	assign CargaQ = (state == S0)? 1:0;
 	assign CargaM = (state == S0)? 1:0;
 	assign Resta = ((q0 == 1 & qu == 0) & (state == S1 | state == S3 | state == S5))? 1:0;
 	assign Suma = ((~Resta) & (state == S1 | state == S3 | state == S5))? 1:0;
-	assign CargaA = ((q0 == 1 & qu == 0) | (q0 == 0 & qu == 1) & (state == S1 | state == S3 | state == S5))? 1:0;
+	assign CargaA = en_operacion & (q0 ^ qu);   // 01 o 10
 	assign DesplazaA = ((state == S2) | (state == S4) | (state == S6))? 1:0;
 	assign Fin = (state == S7)? 1:0;
 
 endmodule
-	
+
