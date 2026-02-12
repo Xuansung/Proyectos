@@ -17,7 +17,7 @@ module uc(input wire q0,qu, start, clk, input wire [3:0] M, A, input wire [2:0] 
 	state <= nextstate;
 
  
- always @(*) // (*) significa cualquier cambio en alguna variable del bloque
+ always @(*)
 	case (state)
 		S0: nextstate = S1;
 		S1: nextstate = S2;
