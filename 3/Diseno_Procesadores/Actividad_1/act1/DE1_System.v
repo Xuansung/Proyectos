@@ -1,0 +1,44 @@
+
+module DE1_System( 
+		input wire CLOCK_50,						//	50 MHz
+		////////////////////	Push Button		////////////////////
+		input wire [3:0] KEY,							//	Pushbutton[3:0]
+		////////////////////	DPDT Switch		////////////////////
+		input wire [9:0] SW,								//	Toggle Switch[9:0]
+		////////////////////	7-SEG Dispaly	////////////////////
+		output wire [6:0] HEX0,							//	Seven Segment Digit 0
+		output wire [6:0] HEX1,							//	Seven Segment Digit 1
+		output wire [6:0] HEX2,							//	Seven Segment Digit 2
+		output wire [6:0] HEX3,							//	Seven Segment Digit 3
+		////////////////////////	LED		////////////////////////
+		output wire [9:0] LEDR,							//	LED Red[9:0]
+		output wire [7:0] LEDG							//	LED Green[7:0]
+	);
+
+	//	Instanciar el multiplicador
+
+
+endmodule
+
+module hexdec(input wire [3:0] hex, output reg [6:0] dec);
+    always @(hex)
+        case (hex)
+            4'b0000: dec = 7'b1000000;
+            4'b0001: dec = 7'b1111001;
+            4'b0010: dec = 7'b0100100;
+            4'b0011: dec = 7'b0110000;
+            4'b0100: dec = 7'b0011001;
+            4'b0101: dec = 7'b0010010;
+            4'b0110: dec = 7'b0000010;
+            4'b0111: dec = 7'b1111000;
+            4'b1000: dec = 7'b0000000;
+            4'b1001: dec = 7'b0010000;
+            4'b1010: dec = 7'b0001000;
+            4'b1011: dec = 7'b0000011;
+            4'b1100: dec = 7'b1000110;
+            4'b1101: dec = 7'b0100001;
+            4'b1110: dec = 7'b0000110;
+            4'b1111: dec = 7'b0001110;
+            default: dec = 7'b1111111;
+        endcase
+endmodule

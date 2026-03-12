@@ -1,0 +1,13 @@
+jmp 2
+nop
+li 2, r1
+li 3, r2
+add r1, r2, r3
+sub r1, r2, r4
+and r1, r2, r5
+jnz 9
+nop
+sub r1, r1, r3
+jz 12
+nop
+jmp 12
