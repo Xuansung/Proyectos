@@ -7,7 +7,7 @@ module regfile(input  wire        clk,
                input  wire [15:0]  wd3, 			 //dato a escribir
                output wire [15:0]  rd1, rd2);     //datos leidos
 
-  reg [7:0] regb[0:15]; //memoria de 16 registros de 8 bits de ancho
+  reg [15:0] regb[0:15]; //memoria de 16 registros de 16 bits de ancho
 
   initial
   begin
@@ -60,11 +60,13 @@ module mux4 #(parameter WIDTH = 8) // modulo multiplexor 4 a 1
              (input  wire [WIDTH-1:0] d0, d1, d2, d3
               input  wire [2:0]       s, 
               output wire [WIDTH-1:0] y);
-  case(s) begin
-    2'b00: assign y = d0;
-    2'b01: assign y = d1;
-    2'b10: assign y = d2;
-    2'b11: assign y = d3;
+  always @(*) begin
+    case(s)
+      2'b00: y = d0;
+      2'b01: y = d1;
+      2'b10: y = d2;
+      2'b11: y = d3;
+    endcase
   end
 
 endmodule
