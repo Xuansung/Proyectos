@@ -1,9 +1,9 @@
-module alu(input wire [7:0] a, b,
-           input wire [2:0] op_alu,
-           output wire [7:0] y,
+module alu(input wire [15:0] a, b,
+           input wire [3:0] op_alu,
+           output wire [15:0] y,
            output wire zero);
 
-reg [7:0] s;		   
+reg [15:0] s;		   
 		   
 always @(a, b, op_alu)
 begin

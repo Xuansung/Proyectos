@@ -23,7 +23,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, we3, wf
             end
             8'b0011????: begin // ALU(inm)
                 wf = 1'b1;
-                wd = 2'b11;
+                wd = 2'b01;
                 we3 = 1'b1;
                 s_inc = 1'b1;
                 pop = 1'b0;
@@ -43,7 +43,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, we3, wf
                 m_wr = 1'b0;
                 op_alu = 4'b0000;
             end
-            8'b00001000: begin // GUARDA EN MEMORIA(SW)
+            8'b00001001: begin // GUARDA EN MEMORIA(SW)
                 wf = 1'b0;
                 wd = 2'b01;
                 we3 = 1'b0;
