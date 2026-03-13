@@ -26,7 +26,7 @@ module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [
   assign rd = mem[a];
 endmodule
 
-module stack(input wire clk, input wire [9:0] wd, input wire push, input wire pop, output wire [9:0] rd, reset); // pila para los saltos de subrutina
+module stack(input wire clk, reset, input wire [9:0] wd, input wire push, input wire pop, output wire [9:0] rd ); // pila para los saltos de subrutina
   reg [9:0] stackmem[0:15];
   reg [3:0] sp;
   always @(posedge clk) begin

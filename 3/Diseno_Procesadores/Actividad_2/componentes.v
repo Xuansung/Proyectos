@@ -57,9 +57,9 @@ module mux2 #(parameter WIDTH = 8)
 endmodule
 
 module mux4 #(parameter WIDTH = 8) // modulo multiplexor 4 a 1
-             (input  wire [WIDTH-1:0] d0, d1, d2, d3
-              input  wire [2:0]       s, 
-              output wire [WIDTH-1:0] y);
+             (input  wire [WIDTH-1:0] d0, d1, d2, d3,
+              input  wire [1:0]       s, 
+              output reg [WIDTH-1:0] y);
   always @(*) begin
     case(s)
       2'b00: y = d0;

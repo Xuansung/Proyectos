@@ -1,28 +1,28 @@
 module alu(input wire [15:0] a, b,
            input wire [3:0] op_alu,
            output wire [15:0] y,
-           output wire zero);
+           output wire zero, zneg, zcarry);
 
-reg [15:0] s;		   
+reg [16:0] s;		   
 		   
 always @(a, b, op_alu)
 begin
   case (op_alu)              
-    3'b000: s = a;
-    3'b001: s = ~a;
-    3'b010: s = a + b;
-    3'b011: s = a - b;
-    3'b100: s = a & b;
-    3'b101: s = a | b;
-    3'b110: s = -a;
-    3'b111: s = -b;
-	default: s = 'bx; //desconocido en cualquier otro caso (x o z), por si se modifica el código
+    4'b0000: s = a;
+    4'b0001: s = ~a;
+    4'b0010: s = a + b;
+    4'b0011: s = a - b;
+    4'b0100: s = a & b;
+    4'b0101: s = a | b;
+    4'b0110: s = -a;
+    4'b0111: s = -b;
+	default: s = 17'bx; //desconocido en cualquier otro caso (x o z), por si se modifica el código
   endcase
 end
 
-assign y = s;
+assign y = s[15:0];
 
 //Calculo del flag de cero
 assign zero = ~(|y);   //operador de reducción |y hace la or de los bits del vector 'y' y devuelve 1 bit resultado
-		   
-endmodule
+assign zneg = y[15]; //El bit más significativo si es negativo.
+assign zcarry = s[16]; //El bit 17 de carry. 
