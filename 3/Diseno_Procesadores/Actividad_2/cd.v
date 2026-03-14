@@ -7,8 +7,8 @@ module cd(input wire clk, reset, r_inm, s_inc, we3, wef, push, pop, m_wr, input 
     wire zalu, zero, zneg, zcarry;
 
     assign opcode = instruccion[31:24];
-    assign ra1 = instruccion[15:12];
-    assign ra2 = instruccion[19:16];
+    assign ra1 = r_inm ? instruccion[19:16] : instruccion[15:12];
+    assign ra2 = r_inm ? instruccion[23:20] : instruccion[19:16];
     assign wa3 = instruccion[23:20];
     assign dir_salto = instruccion[15:6];
     assign inmediato = instruccion[15:0];
@@ -22,17 +22,16 @@ module cd(input wire clk, reset, r_inm, s_inc, we3, wef, push, pop, m_wr, input 
     ffd neg(clk, reset, zneg, wef, n);
     ffd carry(clk, reset, zcarry, wef, c);
 
-    alu mialu(salida_muxinm, rd2, op_alu, salida_alu, zalu, zneg, zcarry);
+    alu mialu(rd1, salida_muxinm, op_alu, salida_alu, zalu, zneg, zcarry);
     mux2 #(10) muxpc(dir_salto, salida_sum, s_inc, pc_nuevo_inc);
     sum suma_inc(10'b0000000001, pc, salida_sum);
 
     // ampliación
-
     mux4 #(16) muxescritura(16'b0, salida_alu, salida_memoria, inmediato, s_wd, wd3);
     stack pila(clk, reset, salida_sum, push, pop, salida_pila );
     memdat memoriadatos(clk, m_wr, salida_alu, rd2, salida_memoria);
     mux2 #(10) muxpila(pc_nuevo_inc, salida_pila, pop, pc_nuevo);
-    mux2 #(16) muxr1(rd1, inmediato, r_inm, salida_muxinm);
+    mux2 #(16) muxr1(rd2, inmediato, r_inm, salida_muxinm);
 
     assign pc_salida = pc;
 

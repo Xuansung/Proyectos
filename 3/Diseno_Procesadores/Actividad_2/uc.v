@@ -45,7 +45,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, we3, wf
             end
             8'b00001001: begin // GUARDA EN MEMORIA(SW)
                 wf = 1'b0;
-                wd = 2'b01;
+                wd = 2'b00;
                 we3 = 1'b0;
                 s_inc = 1'b1;
                 pop = 1'b0;

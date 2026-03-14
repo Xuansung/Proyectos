@@ -18,7 +18,6 @@ endmodule
 module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [15:0] wd, output wire [15:0] rd); // Modulo para la memoria de datos
   reg [15:0] mem[0:1023];
 
-
   always @(posedge clk) begin
     if (m_wr) mem[a] <= wd;
   end
