@@ -186,6 +186,17 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 m_wr = 1'b0;
                 op_alu = 4'b0000;
             end
+            default: begin
+                s_inc = 1'b0;
+                wd = 1'b0;
+                we3 = 1'b0;
+                wf = 1'b0;
+                pop = 1'b0;
+                push = 1'b0;
+                r_inm = 1'b0;
+                m_wr = 1'b0;
+                op_alu = 4'b0000;
+            end
         endcase
     end
 endmodule

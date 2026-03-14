@@ -4,7 +4,7 @@ module memprog(input  wire        clk,
                input  wire [9:0]  a,
                output wire [31:0] rd);
 
-  reg [31:0] mem[0:1023]; //memoria de 1024 palabras de 16 bits de ancho
+  reg [31:0] mem[0:63]; //memoria de 1024 palabras de 16 bits de ancho
 
   initial
   begin
@@ -16,7 +16,7 @@ module memprog(input  wire        clk,
 endmodule
 
 module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [15:0] wd, output wire [15:0] rd); // Modulo para la memoria de datos
-  reg [15:0] mem[0:1023];
+  reg [15:0] mem[0:63];
 
   always @(posedge clk) begin
     if (m_wr) mem[a] <= wd;

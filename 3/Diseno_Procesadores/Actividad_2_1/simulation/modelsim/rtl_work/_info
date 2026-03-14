@@ -1,0 +1,285 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\User\Desktop\Proyectos\3\Diseno_Procesadores\Actividad_2_1\simulation\modelsim
+valu
+Ig4^gV^ojVX>MT@TBUO:z[1
+Vn5cAVRW5b1_UgOK8S^=zj0
+Z1 dC:\Users\User\Desktop\Proyectos\3\Diseno_Procesadores\Actividad_2_1\simulation\modelsim
+w1773528958
+8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/alu.v
+FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/alu.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 -O0
+!i10b 1
+!s100 0N3LD47D<:?ShP52RG5NO3
+!s85 0
+!s108 1773530316.561000
+!s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/alu.v|
+!s101 -O0
+vcd
+IHGI9:BagTf`=n`]HoXCoc1
+V:gXm<zEKkJ?2>>CY1AnYc1
+R1
+w1773528272
+8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v
+FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 45a?k>cQSQR=]R7:R4KO41
+!s85 0
+!s108 1773530316.487000
+!s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v|
+!s101 -O0
+vcpu
+I29R<VZE0VQQfVO7PAmANI0
+V>EoLT_h?4TE8CW4^3bEl93
+R1
+w1773528210
+8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu.v
+FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 ebEHL9_bY07dE]nRecWLO3
+!s85 0
+!s108 1773530316.414000
+!s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu.v|
+!s101 -O0
+vcpu_tb
+!i10b 1
+!s100 0P2nM]]@W0[KlM@eBgQdX0
+I69XOOUl?amQ8eYnE;Pd7^1
+V0P>[JOo>6KEkgKO=1CbUG0
+R1
+w1773429751
+8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v
+FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+!s108 1773530316.838000
+!s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v|
+!s101 -O0
+R3
+R4
+vffd
+IhPmEcgCol2enA0o80FXjo0
+VjTGai8EcUlS51M<UTA4<53
+R1
+Z5 w1773519824
+Z6 8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v
+Z7 FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v
+L0 76
+R2
+r1
+31
+Z8 !s108 1773530316.726000
+Z9 !s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v|
+Z10 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v|
+R3
+R4
+!i10b 1
+!s100 S5GUL;mlkG^UFXHMKUzhU2
+!s85 0
+!s101 -O0
+vmemdat
+IR9==ml@]?dZL8dGW?Ai6j0
+V2>Ud<j@Qe_S0Ch:B@id8T1
+R1
+Z11 w1773529683
+Z12 8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/memprog.v
+Z13 FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/memprog.v
+L0 18
+R2
+r1
+31
+Z14 !s108 1773530316.634000
+Z15 !s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/memprog.v|
+Z16 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/memprog.v|
+R3
+R4
+!i10b 1
+!s100 9^8RnMXPH0aeaUbc6dh;40
+!s85 0
+!s101 -O0
+vmemprog
+IHbahS<chKR8bITiDIQE]D0
+Vd;Q:AZ]5@@]5kaLT=m;oJ1
+R1
+R11
+R12
+R13
+L0 3
+R2
+r1
+31
+R14
+R15
+R16
+R3
+R4
+!i10b 1
+!s100 _f:]2g?kT2_PO;K14HFlZ0
+!s85 0
+!s101 -O0
+vmux2
+IFO;G0h_^Wi;ZAaJ4dHG`_3
+VT8RWJBjAIeM]>7U=5kBkT1
+R1
+R5
+R6
+R7
+L0 50
+R2
+r1
+31
+R8
+R9
+R10
+R3
+R4
+!i10b 1
+!s100 >bi;jmgNS0k>hS<[8f6GD0
+!s85 0
+!s101 -O0
+vmux4
+I52Kc:7lSAkM;B1;A@Ih6k3
+V@m74j;^3XFJ7>OzQXh6V`0
+R1
+R5
+R6
+R7
+L0 59
+R2
+r1
+31
+R8
+R9
+R10
+R3
+R4
+!i10b 1
+!s100 ^8Gz@4c=_6UlCEgKPXP=:1
+!s85 0
+!s101 -O0
+vregfile
+ITo;P7[T1SbcN4SkJn]HkU1
+V<f9GeE6e`4]BJ06lQS^5z3
+R1
+R5
+R6
+R7
+L0 4
+R2
+r1
+31
+R8
+R9
+R10
+R3
+R4
+!i10b 1
+!s100 VGNlbS7dP??I6A=B]l>Z20
+!s85 0
+!s101 -O0
+vregistro
+IHA`aV8`0;CD<?Ta35YV8C0
+V[l_eX9N@hC:Ohk^2I5^P50
+R1
+R5
+R6
+R7
+L0 38
+R2
+r1
+31
+R8
+R9
+R10
+R3
+R4
+!i10b 1
+!s100 h581kEMhkYX2bMdn2^Ij51
+!s85 0
+!s101 -O0
+vstack
+I5Na<DFE>7VCGl6JObS=D01
+VQ]NN[bo6@L6:^b=5oO?:R2
+R1
+R11
+R12
+R13
+L0 28
+R2
+r1
+31
+R14
+R15
+R16
+R3
+R4
+!i10b 1
+!s100 5hAiYfBlCm;]MG5;MX5452
+!s85 0
+!s101 -O0
+vsum
+I6[IN]D`8NagjDe5PR687]1
+VJzHUJ]XeEfJd15WDG_a[f1
+R1
+R5
+R6
+R7
+L0 30
+R2
+r1
+31
+R8
+R9
+R10
+R3
+R4
+!i10b 1
+!s100 2E<hG^`37UKZ72YLB;Z4`1
+!s85 0
+!s101 -O0
+vuc
+IDZ5[TPi;SMCQ0WFK0DL3W3
+VV6[dbOk99d@Kz;B9GN`oJ0
+R1
+w1773529051
+8C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/uc.v
+FC:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/uc.v
+L0 1
+R2
+r1
+31
+R3
+R4
+!i10b 1
+!s100 9K:Q3kg:`nm?[g;PanG`D3
+!s85 0
+!s108 1773530316.320000
+!s107 C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/uc.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1|C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/uc.v|
+!s101 -O0

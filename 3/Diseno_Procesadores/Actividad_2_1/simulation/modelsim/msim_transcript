@@ -1,0 +1,171 @@
+# Reading C:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do actividad2_1_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/uc.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module uc
+# 
+# Top level modules:
+# 	uc
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cpu
+# 
+# Top level modules:
+# 	cpu
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cd
+# 
+# Top level modules:
+# 	cd
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/alu.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/memprog.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module memprog
+# -- Compiling module memdat
+# -- Compiling module stack
+# 
+# Top level modules:
+# 	memprog
+# 	memdat
+# 	stack
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module regfile
+# -- Compiling module sum
+# -- Compiling module registro
+# -- Compiling module mux2
+# -- Compiling module mux4
+# -- Compiling module ffd
+# 
+# Top level modules:
+# 	regfile
+# 	sum
+# 	registro
+# 	mux2
+# 	mux4
+# 	ffd
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1 {C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module cpu_tb
+# 
+# Top level modules:
+# 	cpu_tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs="+acc"  cpu_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps cpu_tb 
+# Loading work.cpu_tb
+# Loading work.cpu
+# Loading work.cd
+# Loading work.registro
+# Loading work.regfile
+# Loading work.memprog
+# Loading work.ffd
+# Loading work.alu
+# Loading work.mux2
+# Loading work.sum
+# Loading work.stack
+# Loading work.memdat
+# Loading work.uc
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'a'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(30).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'b'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(30).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'y'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(31).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# ** Note: $finish    : C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v(34)
+#    Time: 280 ns  Iteration: 0  Instance: /cpu_tb
+# 1
+# Break in Module cpu_tb at C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v line 34
+# Simulation Breakpoint: 1
+# Break in Module cpu_tb at C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v line 34
+# MACRO ./actividad2_1_run_msim_rtl_verilog.do PAUSED at line 22
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/clk
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/reset
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/r_inm
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/s_inc
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/we3
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/wef
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/push
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pop
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/m_wr
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/s_wd
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/op_alu
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/z
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/c
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/n
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/opcode
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc_salida
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/instruccion
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/salida_sum
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/dir_salto
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc_siguiente
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc_final
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc_nuevo
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/pc_nuevo_inc
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/salida_pila
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/ra1
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/ra2
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/wa3
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/rd1
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/rd2
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/wd3
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/inmediato
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/salida_alu
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/salida_memoria
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/salida_muxinm
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/zalu
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/zero
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/zneg
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/zcarry
+add wave -position end  sim:/cpu_tb/micpu/caminodatos/instruccion
+restart -f
+# Closing VCD file "C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/DE1_tb.vcd"
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'a'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(30).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'b'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(30).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+# ** Warning: (vsim-3015) C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cd.v(27): [PCDPC] - Port size (16 or 16) does not match connection size (10) for port 'y'. The port definition is at: C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/componentes.v(31).
+# 
+#         Region: /cpu_tb/micpu/caminodatos/suma_inc
+run --all
+# Unknown option: -all
+# ** Error: (vsim-4005) Invalid argument '--all'.
+# Usage: run [<timesteps> [<time_units>]] | -all | -continue | -next | -step | -over | -out | -init | -final
+run -all
+# ** Note: $finish    : C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v(34)
+#    Time: 280 ns  Iteration: 0  Instance: /cpu_tb
+# 1
+# Break in Module cpu_tb at C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2_1/cpu_tb.v line 34
+add wave -position end  sim:/cpu_tb/pc_salida
+# Break key hit 
+# Break key hit 

@@ -1,0 +1,1144 @@
+TimeQuest Timing Analyzer report for actividad2_1
+Sat Mar 14 23:08:41 2026
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow Model Fmax Summary
+  7. Slow Model Setup Summary
+  8. Slow Model Hold Summary
+  9. Slow Model Recovery Summary
+ 10. Slow Model Removal Summary
+ 11. Slow Model Minimum Pulse Width Summary
+ 12. Slow Model Setup: 'clk'
+ 13. Slow Model Hold: 'clk'
+ 14. Slow Model Minimum Pulse Width: 'clk'
+ 15. Setup Times
+ 16. Hold Times
+ 17. Clock to Output Times
+ 18. Minimum Clock to Output Times
+ 19. Fast Model Setup Summary
+ 20. Fast Model Hold Summary
+ 21. Fast Model Recovery Summary
+ 22. Fast Model Removal Summary
+ 23. Fast Model Minimum Pulse Width Summary
+ 24. Fast Model Setup: 'clk'
+ 25. Fast Model Hold: 'clk'
+ 26. Fast Model Minimum Pulse Width: 'clk'
+ 27. Setup Times
+ 28. Hold Times
+ 29. Clock to Output Times
+ 30. Minimum Clock to Output Times
+ 31. Multicorner Timing Analysis Summary
+ 32. Setup Times
+ 33. Hold Times
+ 34. Clock to Output Times
+ 35. Minimum Clock to Output Times
+ 36. Setup Transfers
+ 37. Hold Transfers
+ 38. Report TCCS
+ 39. Report RSKM
+ 40. Unconstrained Paths
+ 41. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; actividad2_1                                                      ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C20F484C7                                                      ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 24     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------+
+; SDC File List                                     ;
++---------------+--------+--------------------------+
+; SDC File Path ; Status ; Read at                  ;
++---------------+--------+--------------------------+
+; DE1.sdc       ; OK     ; Sat Mar 14 23:08:41 2026 ;
++---------------+--------+--------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++-------------------------------------------------+
+; Slow Model Fmax Summary                         ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 50.46 MHz ; 50.46 MHz       ; clk        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++---------------------------------+
+; Slow Model Setup Summary        ;
++-------+---------+---------------+
+; Clock ; Slack   ; End Point TNS ;
++-------+---------+---------------+
+; clk   ; -18.819 ; -19596.800    ;
++-------+---------+---------------+
+
+
++-------------------------------+
+; Slow Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.445 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.631 ; -1625.669             ;
++-------+--------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clk'                                                                                                                                 ;
++---------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                        ; To Node                              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+; -18.819 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.857     ;
+; -18.818 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.856     ;
+; -18.801 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.839     ;
+; -18.800 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.838     ;
+; -18.787 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.822     ;
+; -18.786 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.821     ;
+; -18.786 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.001     ; 19.823     ;
+; -18.769 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.804     ;
+; -18.768 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.803     ;
+; -18.768 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.001     ; 19.805     ;
+; -18.739 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.762     ;
+; -18.735 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.758     ;
+; -18.721 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.744     ;
+; -18.717 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.740     ;
+; -18.713 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.726     ;
+; -18.711 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.724     ;
+; -18.697 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.719     ;
+; -18.697 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.719     ;
+; -18.695 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.708     ;
+; -18.693 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.706     ;
+; -18.679 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.701     ;
+; -18.679 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.701     ;
+; -18.647 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.002      ; 19.687     ;
+; -18.647 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.687     ;
+; -18.629 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.002      ; 19.669     ;
+; -18.629 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.669     ;
+; -18.611 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.649     ;
+; -18.610 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.648     ;
+; -18.599 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~120 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.612     ;
+; -18.596 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~72  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.609     ;
+; -18.588 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~56  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.623     ;
+; -18.581 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~120 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.594     ;
+; -18.579 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.614     ;
+; -18.578 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.613     ;
+; -18.578 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.001     ; 19.615     ;
+; -18.578 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~72  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.591     ;
+; -18.572 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.610     ;
+; -18.571 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.609     ;
+; -18.570 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~56  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.605     ;
+; -18.540 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.575     ;
+; -18.539 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.574     ;
+; -18.539 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.001     ; 19.576     ;
+; -18.533 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~118 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.546     ;
+; -18.531 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.554     ;
+; -18.529 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~70  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.542     ;
+; -18.527 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.550     ;
+; -18.515 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~118 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.528     ;
+; -18.511 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~70  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.524     ;
+; -18.505 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.518     ;
+; -18.503 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.516     ;
+; -18.493 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~106 ; clk          ; clk         ; 1.000        ; -0.016     ; 19.515     ;
+; -18.492 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~90  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.514     ;
+; -18.492 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.515     ;
+; -18.489 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.511     ;
+; -18.489 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.511     ;
+; -18.488 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.511     ;
+; -18.482 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~45  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.520     ;
+; -18.478 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~61  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.516     ;
+; -18.478 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~77  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.491     ;
+; -18.475 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~106 ; clk          ; clk         ; 1.000        ; -0.016     ; 19.497     ;
+; -18.474 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~90  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.496     ;
+; -18.470 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.493     ;
+; -18.467 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.490     ;
+; -18.466 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.025     ; 19.479     ;
+; -18.464 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~74  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.477     ;
+; -18.464 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.477     ;
+; -18.464 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~45  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.502     ;
+; -18.460 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~61  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.498     ;
+; -18.460 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~77  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.473     ;
+; -18.453 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~98  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.493     ;
+; -18.453 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~101 ; clk          ; clk         ; 1.000        ; 0.002      ; 19.493     ;
+; -18.452 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.475     ;
+; -18.451 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~18  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.491     ;
+; -18.451 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~37  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.491     ;
+; -18.450 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~2   ; clk          ; clk         ; 1.000        ; 0.002      ; 19.490     ;
+; -18.450 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.472     ;
+; -18.450 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.016     ; 19.472     ;
+; -18.449 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.472     ;
+; -18.449 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~98  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.489     ;
+; -18.447 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~18  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.487     ;
+; -18.446 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~74  ; clk          ; clk         ; 1.000        ; -0.025     ; 19.459     ;
+; -18.446 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~2   ; clk          ; clk         ; 1.000        ; 0.002      ; 19.486     ;
+; -18.445 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~66  ; clk          ; clk         ; 1.000        ; -0.001     ; 19.482     ;
+; -18.441 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~66  ; clk          ; clk         ; 1.000        ; -0.001     ; 19.478     ;
+; -18.439 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~109 ; clk          ; clk         ; 1.000        ; -0.016     ; 19.461     ;
+; -18.439 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.002      ; 19.479     ;
+; -18.439 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.479     ;
+; -18.435 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~101 ; clk          ; clk         ; 1.000        ; 0.002      ; 19.475     ;
+; -18.434 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.472     ;
+; -18.433 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; 0.000      ; 19.471     ;
+; -18.433 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~37  ; clk          ; clk         ; 1.000        ; 0.002      ; 19.473     ;
+; -18.421 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~40  ; clk          ; clk         ; 1.000        ; -0.010     ; 19.449     ;
+; -18.421 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~109 ; clk          ; clk         ; 1.000        ; -0.016     ; 19.443     ;
+; -18.410 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~29  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.433     ;
+; -18.410 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~13  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.433     ;
+; -18.403 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~40  ; clk          ; clk         ; 1.000        ; -0.010     ; 19.431     ;
+; -18.402 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.437     ;
+; -18.401 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~15  ; clk          ; clk         ; 1.000        ; -0.015     ; 19.424     ;
+; -18.401 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.003     ; 19.436     ;
+; -18.401 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.001     ; 19.438     ;
++---------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clk'                                                                                                                                             ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                              ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.445 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; cd:caminodatos|stack:pila|sp[3]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; cd:caminodatos|stack:pila|sp[2]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.731      ;
+; 0.906 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.192      ;
+; 1.038 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.324      ;
+; 1.064 ; cd:caminodatos|regfile:regs|regb~81    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.350      ;
+; 1.297 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.583      ;
+; 1.404 ; cd:caminodatos|regfile:regs|regb~80    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.690      ;
+; 1.522 ; cd:caminodatos|registro:PCR|q[8]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 1.804      ;
+; 1.652 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.002      ; 1.940      ;
+; 1.653 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.002      ; 1.941      ;
+; 1.700 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.986      ;
+; 1.768 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.054      ;
+; 1.784 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~853  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.070      ;
+; 1.826 ; cd:caminodatos|regfile:regs|regb~81    ; cd:caminodatos|memdat:memoriadatos|mem~849  ; clk          ; clk         ; 0.000        ; -0.004     ; 2.108      ;
+; 1.865 ; cd:caminodatos|regfile:regs|regb~90    ; cd:caminodatos|memdat:memoriadatos|mem~1018 ; clk          ; clk         ; 0.000        ; 0.012      ; 2.163      ;
+; 1.890 ; cd:caminodatos|stack:pila|sp[2]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.176      ;
+; 1.921 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~49       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.203      ;
+; 1.936 ; cd:caminodatos|regfile:regs|regb~42    ; cd:caminodatos|memdat:memoriadatos|mem~1018 ; clk          ; clk         ; 0.000        ; 0.006      ; 2.228      ;
+; 1.957 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[1]            ; clk          ; clk         ; 0.000        ; -0.002     ; 2.241      ;
+; 1.957 ; cd:caminodatos|stack:pila|stackmem~9   ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.245      ;
+; 1.964 ; cd:caminodatos|registro:PCR|q[1]       ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.002      ; 2.252      ;
+; 1.965 ; cd:caminodatos|registro:PCR|q[1]       ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.002      ; 2.253      ;
+; 1.983 ; cd:caminodatos|stack:pila|stackmem~48  ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.007      ; 2.276      ;
+; 1.986 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.268      ;
+; 1.995 ; cd:caminodatos|regfile:regs|regb~61    ; cd:caminodatos|memdat:memoriadatos|mem~1021 ; clk          ; clk         ; 0.000        ; 0.001      ; 2.282      ;
+; 2.014 ; cd:caminodatos|regfile:regs|regb~48    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; -0.004     ; 2.296      ;
+; 2.025 ; cd:caminodatos|registro:PCR|q[5]       ; cd:caminodatos|registro:PCR|q[2]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.311      ;
+; 2.027 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~67       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.309      ;
+; 2.082 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.364      ;
+; 2.083 ; cd:caminodatos|stack:pila|stackmem~89  ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.371      ;
+; 2.090 ; cd:caminodatos|stack:pila|stackmem~47  ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.378      ;
+; 2.114 ; cd:caminodatos|regfile:regs|regb~33    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.007     ; 2.393      ;
+; 2.123 ; cd:caminodatos|stack:pila|stackmem~6   ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.411      ;
+; 2.124 ; cd:caminodatos|regfile:regs|regb~65    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.006     ; 2.404      ;
+; 2.153 ; cd:caminodatos|stack:pila|stackmem~128 ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.007      ; 2.446      ;
+; 2.192 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~613  ; clk          ; clk         ; 0.000        ; 0.003      ; 2.481      ;
+; 2.192 ; cd:caminodatos|stack:pila|stackmem~83  ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.002     ; 2.476      ;
+; 2.196 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~66       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.478      ;
+; 2.199 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~26       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.481      ;
+; 2.222 ; cd:caminodatos|regfile:regs|regb~113   ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.008     ; 2.500      ;
+; 2.225 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.003      ; 2.514      ;
+; 2.303 ; cd:caminodatos|regfile:regs|regb~38    ; cd:caminodatos|memdat:memoriadatos|mem~1014 ; clk          ; clk         ; 0.000        ; 0.004      ; 2.593      ;
+; 2.303 ; cd:caminodatos|regfile:regs|regb~49    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.007     ; 2.582      ;
+; 2.307 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~107      ; clk          ; clk         ; 0.000        ; -0.005     ; 2.588      ;
+; 2.323 ; cd:caminodatos|stack:pila|stackmem~24  ; cd:caminodatos|registro:PCR|q[4]            ; clk          ; clk         ; 0.000        ; -0.003     ; 2.606      ;
+; 2.355 ; cd:caminodatos|stack:pila|stackmem~8   ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.643      ;
+; 2.360 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.003      ; 2.649      ;
+; 2.370 ; cd:caminodatos|stack:pila|stackmem~29  ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.658      ;
+; 2.404 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.003      ; 2.693      ;
+; 2.410 ; cd:caminodatos|stack:pila|stackmem~125 ; cd:caminodatos|registro:PCR|q[5]            ; clk          ; clk         ; 0.000        ; -0.002     ; 2.694      ;
+; 2.412 ; cd:caminodatos|regfile:regs|regb~44    ; cd:caminodatos|memdat:memoriadatos|mem~620  ; clk          ; clk         ; 0.000        ; -0.004     ; 2.694      ;
+; 2.428 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~59       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.714      ;
+; 2.438 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.005      ; 2.729      ;
+; 2.443 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~29       ; clk          ; clk         ; 0.000        ; -0.002     ; 2.727      ;
+; 2.444 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~9        ; clk          ; clk         ; 0.000        ; -0.002     ; 2.728      ;
+; 2.444 ; cd:caminodatos|stack:pila|stackmem~27  ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.732      ;
+; 2.446 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~19       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.732      ;
+; 2.449 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~86       ; clk          ; clk         ; 0.000        ; -0.002     ; 2.733      ;
+; 2.450 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~89       ; clk          ; clk         ; 0.000        ; -0.002     ; 2.734      ;
+; 2.453 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~6        ; clk          ; clk         ; 0.000        ; -0.002     ; 2.737      ;
+; 2.459 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~245  ; clk          ; clk         ; 0.000        ; 0.003      ; 2.748      ;
+; 2.459 ; cd:caminodatos|regfile:regs|regb~112   ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; 0.003      ; 2.748      ;
+; 2.461 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.002     ; 2.745      ;
+; 2.463 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[2]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.749      ;
+; 2.465 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|regfile:regs|regb~16         ; clk          ; clk         ; 0.000        ; 0.002      ; 2.753      ;
+; 2.465 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~69       ; clk          ; clk         ; 0.000        ; 0.000      ; 2.751      ;
+; 2.470 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~1015 ; clk          ; clk         ; 0.000        ; -0.002     ; 2.754      ;
+; 2.474 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.760      ;
+; 2.475 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~67       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.757      ;
+; 2.485 ; cd:caminodatos|stack:pila|stackmem~40  ; cd:caminodatos|registro:PCR|q[0]            ; clk          ; clk         ; 0.000        ; -0.003     ; 2.768      ;
+; 2.502 ; cd:caminodatos|stack:pila|stackmem~7   ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.790      ;
+; 2.502 ; cd:caminodatos|stack:pila|stackmem~106 ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.790      ;
+; 2.511 ; cd:caminodatos|regfile:regs|regb~61    ; cd:caminodatos|memdat:memoriadatos|mem~365  ; clk          ; clk         ; 0.000        ; 0.002      ; 2.799      ;
+; 2.519 ; cd:caminodatos|regfile:regs|regb~118   ; cd:caminodatos|memdat:memoriadatos|mem~1014 ; clk          ; clk         ; 0.000        ; 0.026      ; 2.831      ;
+; 2.522 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~631  ; clk          ; clk         ; 0.000        ; 0.006      ; 2.814      ;
+; 2.529 ; cd:caminodatos|regfile:regs|regb~1     ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.009     ; 2.806      ;
+; 2.530 ; cd:caminodatos|stack:pila|stackmem~88  ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.002      ; 2.818      ;
+; 2.533 ; cd:caminodatos|regfile:regs|regb~51    ; cd:caminodatos|memdat:memoriadatos|mem~979  ; clk          ; clk         ; 0.000        ; -0.005     ; 2.814      ;
+; 2.533 ; cd:caminodatos|regfile:regs|regb~51    ; cd:caminodatos|memdat:memoriadatos|mem~851  ; clk          ; clk         ; 0.000        ; -0.005     ; 2.814      ;
+; 2.533 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.003      ; 2.822      ;
+; 2.533 ; cd:caminodatos|stack:pila|stackmem~16  ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.819      ;
+; 2.534 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~229  ; clk          ; clk         ; 0.000        ; 0.005      ; 2.825      ;
+; 2.538 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~615  ; clk          ; clk         ; 0.000        ; -0.003     ; 2.821      ;
+; 2.539 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~999  ; clk          ; clk         ; 0.000        ; -0.003     ; 2.822      ;
+; 2.540 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~391  ; clk          ; clk         ; 0.000        ; -0.009     ; 2.817      ;
+; 2.547 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|regfile:regs|regb~16         ; clk          ; clk         ; 0.000        ; 0.002      ; 2.835      ;
+; 2.550 ; cd:caminodatos|stack:pila|stackmem~3   ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.003     ; 2.833      ;
+; 2.551 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~197  ; clk          ; clk         ; 0.000        ; -0.002     ; 2.835      ;
+; 2.553 ; cd:caminodatos|regfile:regs|regb~45    ; cd:caminodatos|memdat:memoriadatos|mem~1021 ; clk          ; clk         ; 0.000        ; 0.001      ; 2.840      ;
+; 2.568 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~46       ; clk          ; clk         ; 0.000        ; -0.004     ; 2.850      ;
+; 2.571 ; cd:caminodatos|regfile:regs|regb~80    ; cd:caminodatos|memdat:memoriadatos|mem~320  ; clk          ; clk         ; 0.000        ; -0.004     ; 2.853      ;
+; 2.574 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.002      ; 2.862      ;
+; 2.574 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.002      ; 2.862      ;
+; 2.595 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~126      ; clk          ; clk         ; 0.000        ; -0.003     ; 2.878      ;
+; 2.603 ; cd:caminodatos|regfile:regs|regb~52    ; cd:caminodatos|memdat:memoriadatos|mem~1012 ; clk          ; clk         ; 0.000        ; -0.001     ; 2.888      ;
+; 2.604 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~389  ; clk          ; clk         ; 0.000        ; -0.007     ; 2.883      ;
+; 2.604 ; cd:caminodatos|regfile:regs|regb~96    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; -0.006     ; 2.884      ;
+; 2.607 ; cd:caminodatos|stack:pila|stackmem~103 ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.003     ; 2.890      ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clk'                                                                                        ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                      ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+; -1.631 ; 1.000        ; 2.631          ; Port Rate        ; clk   ; Rise       ; clk                                         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:carry|q                  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:carry|q                  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:neg|q                    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:neg|q                    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:zer|q                    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:zer|q                    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~0    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~0    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~10   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~10   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~100  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~100  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1000 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1000 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1001 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1001 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1002 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1002 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1003 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1003 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1004 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1004 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1005 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1005 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1006 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1006 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1007 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1007 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1008 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1008 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1009 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1009 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~101  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~101  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1010 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1010 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1011 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1011 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1012 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1012 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1013 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1013 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1014 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1014 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1015 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1015 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1016 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1016 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1017 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1017 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1018 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1018 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1019 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1019 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~102  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~102  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1020 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1020 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1021 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1021 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1022 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1022 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1023 ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1023 ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~103  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~103  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~104  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~104  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~105  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~105  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~106  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~106  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~107  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~107  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~108  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~108  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~109  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~109  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~11   ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~11   ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~110  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~110  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~111  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~111  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~112  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~112  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~113  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~113  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~114  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~114  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~115  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~115  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~116  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~116  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~117  ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~117  ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~118  ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; reset     ; clk        ; 2.887 ; 2.887 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; reset     ; clk        ; -0.535 ; -0.535 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Clock to Output Times                                                     ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 8.833 ; 8.833 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 8.618 ; 8.618 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 8.327 ; 8.327 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 7.953 ; 7.953 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 7.995 ; 7.995 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 8.699 ; 8.699 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 8.833 ; 8.833 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 7.667 ; 7.667 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 7.947 ; 7.947 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 7.964 ; 7.964 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 7.976 ; 7.976 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                             ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 7.667 ; 7.667 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 8.618 ; 8.618 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 8.327 ; 8.327 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 7.953 ; 7.953 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 7.995 ; 7.995 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 8.699 ; 8.699 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 8.833 ; 8.833 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 7.667 ; 7.667 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 7.947 ; 7.947 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 7.964 ; 7.964 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 7.976 ; 7.976 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------+
+; Fast Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -6.430 ; -6585.638     ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Fast Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.215 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.380 ; -1330.380             ;
++-------+--------+-----------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clk'                                                                                                                                ;
++--------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                        ; To Node                              ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+; -6.430 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.461      ;
+; -6.429 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.460      ;
+; -6.423 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.454      ;
+; -6.422 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.453      ;
+; -6.405 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.002     ; 7.435      ;
+; -6.398 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.002     ; 7.428      ;
+; -6.389 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.400      ;
+; -6.388 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.406      ;
+; -6.387 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.398      ;
+; -6.384 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.402      ;
+; -6.382 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.393      ;
+; -6.381 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.399      ;
+; -6.380 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.391      ;
+; -6.377 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.395      ;
+; -6.375 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.392      ;
+; -6.375 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.392      ;
+; -6.370 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.401      ;
+; -6.369 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.400      ;
+; -6.368 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.385      ;
+; -6.368 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.385      ;
+; -6.366 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.399      ;
+; -6.365 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.398      ;
+; -6.359 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.390      ;
+; -6.359 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.392      ;
+; -6.358 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.389      ;
+; -6.358 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.391      ;
+; -6.345 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.002     ; 7.375      ;
+; -6.334 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.002     ; 7.364      ;
+; -6.329 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.340      ;
+; -6.328 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.346      ;
+; -6.327 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.338      ;
+; -6.324 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.342      ;
+; -6.323 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.351      ;
+; -6.322 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.350      ;
+; -6.318 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.329      ;
+; -6.317 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.335      ;
+; -6.316 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.327      ;
+; -6.316 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.344      ;
+; -6.315 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.332      ;
+; -6.315 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.332      ;
+; -6.315 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.343      ;
+; -6.313 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.331      ;
+; -6.311 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.329      ;
+; -6.310 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.328      ;
+; -6.306 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.339      ;
+; -6.305 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.338      ;
+; -6.304 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.321      ;
+; -6.304 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.321      ;
+; -6.304 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.322      ;
+; -6.303 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.321      ;
+; -6.295 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.328      ;
+; -6.294 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.327      ;
+; -6.292 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.323      ;
+; -6.291 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.322      ;
+; -6.279 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~120 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.290      ;
+; -6.277 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~56  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.305      ;
+; -6.276 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~72  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.287      ;
+; -6.272 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~120 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.283      ;
+; -6.270 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~56  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.298      ;
+; -6.269 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~72  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.280      ;
+; -6.267 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~107 ; clk          ; clk         ; 1.000        ; -0.002     ; 7.297      ;
+; -6.263 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.291      ;
+; -6.262 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.290      ;
+; -6.261 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~81  ; clk          ; clk         ; 1.000        ; -0.006     ; 7.287      ;
+; -6.259 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~62  ; clk          ; clk         ; 1.000        ; -0.003     ; 7.288      ;
+; -6.258 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~46  ; clk          ; clk         ; 1.000        ; -0.003     ; 7.287      ;
+; -6.252 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~38  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.280      ;
+; -6.252 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~62  ; clk          ; clk         ; 1.000        ; -0.003     ; 7.281      ;
+; -6.251 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~115 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.262      ;
+; -6.251 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~54  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.279      ;
+; -6.251 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.269      ;
+; -6.251 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~46  ; clk          ; clk         ; 1.000        ; -0.003     ; 7.280      ;
+; -6.250 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~94  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.281      ;
+; -6.250 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~27  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.268      ;
+; -6.250 ; cd:caminodatos|registro:PCR|q[4] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.268      ;
+; -6.249 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~126 ; clk          ; clk         ; 1.000        ; -0.001     ; 7.280      ;
+; -6.249 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~67  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.260      ;
+; -6.246 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~11  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.264      ;
+; -6.243 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~94  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.274      ;
+; -6.242 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~126 ; clk          ; clk         ; 1.000        ; -0.001     ; 7.273      ;
+; -6.240 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~65  ; clk          ; clk         ; 1.000        ; -0.002     ; 7.270      ;
+; -6.240 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~30  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.258      ;
+; -6.239 ; cd:caminodatos|registro:PCR|q[1] ; cd:caminodatos|regfile:regs|regb~14  ; clk          ; clk         ; 1.000        ; -0.014     ; 7.257      ;
+; -6.237 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~99  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.254      ;
+; -6.237 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~83  ; clk          ; clk         ; 1.000        ; -0.015     ; 7.254      ;
+; -6.235 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~18  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.268      ;
+; -6.235 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~2   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.268      ;
+; -6.233 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~98  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.266      ;
+; -6.233 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~118 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.244      ;
+; -6.232 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~74  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.243      ;
+; -6.232 ; cd:caminodatos|registro:PCR|q[5] ; cd:caminodatos|regfile:regs|regb~43  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.263      ;
+; -6.231 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~91  ; clk          ; clk         ; 1.000        ; -0.020     ; 7.243      ;
+; -6.231 ; cd:caminodatos|registro:PCR|q[5] ; cd:caminodatos|regfile:regs|regb~59  ; clk          ; clk         ; 1.000        ; -0.001     ; 7.262      ;
+; -6.229 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~66  ; clk          ; clk         ; 1.000        ; -0.002     ; 7.259      ;
+; -6.229 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~70  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.240      ;
+; -6.228 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~19  ; clk          ; clk         ; 1.000        ; 0.001      ; 7.261      ;
+; -6.227 ; cd:caminodatos|registro:PCR|q[3] ; cd:caminodatos|regfile:regs|regb~3   ; clk          ; clk         ; 1.000        ; 0.001      ; 7.260      ;
+; -6.226 ; cd:caminodatos|registro:PCR|q[2] ; cd:caminodatos|regfile:regs|regb~39  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.253      ;
+; -6.226 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~118 ; clk          ; clk         ; 1.000        ; -0.021     ; 7.237      ;
+; -6.225 ; cd:caminodatos|registro:PCR|q[0] ; cd:caminodatos|regfile:regs|regb~74  ; clk          ; clk         ; 1.000        ; -0.021     ; 7.236      ;
++--------+----------------------------------+--------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clk'                                                                                                                                             ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                              ; To Node                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; cd:caminodatos|stack:pila|sp[3]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; cd:caminodatos|stack:pila|sp[2]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.351 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.503      ;
+; 0.398 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.550      ;
+; 0.428 ; cd:caminodatos|regfile:regs|regb~81    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.580      ;
+; 0.483 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.635      ;
+; 0.509 ; cd:caminodatos|regfile:regs|regb~80    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.661      ;
+; 0.590 ; cd:caminodatos|registro:PCR|q[8]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 0.738      ;
+; 0.617 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.001      ; 0.770      ;
+; 0.621 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.001      ; 0.774      ;
+; 0.639 ; cd:caminodatos|stack:pila|sp[1]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.791      ;
+; 0.659 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.811      ;
+; 0.708 ; cd:caminodatos|regfile:regs|regb~81    ; cd:caminodatos|memdat:memoriadatos|mem~849  ; clk          ; clk         ; 0.000        ; -0.004     ; 0.856      ;
+; 0.711 ; cd:caminodatos|stack:pila|sp[2]        ; cd:caminodatos|stack:pila|sp[3]             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.863      ;
+; 0.717 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~49       ; clk          ; clk         ; 0.000        ; -0.003     ; 0.866      ;
+; 0.720 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~853  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.872      ;
+; 0.723 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 0.871      ;
+; 0.731 ; cd:caminodatos|registro:PCR|q[1]       ; cd:caminodatos|stack:pila|sp[2]             ; clk          ; clk         ; 0.000        ; 0.001      ; 0.884      ;
+; 0.735 ; cd:caminodatos|regfile:regs|regb~90    ; cd:caminodatos|memdat:memoriadatos|mem~1018 ; clk          ; clk         ; 0.000        ; 0.010      ; 0.897      ;
+; 0.735 ; cd:caminodatos|registro:PCR|q[1]       ; cd:caminodatos|stack:pila|sp[0]             ; clk          ; clk         ; 0.000        ; 0.001      ; 0.888      ;
+; 0.740 ; cd:caminodatos|registro:PCR|q[5]       ; cd:caminodatos|registro:PCR|q[2]            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.892      ;
+; 0.750 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~67       ; clk          ; clk         ; 0.000        ; -0.004     ; 0.898      ;
+; 0.754 ; cd:caminodatos|regfile:regs|regb~48    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; -0.002     ; 0.904      ;
+; 0.755 ; cd:caminodatos|stack:pila|stackmem~9   ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 0.909      ;
+; 0.760 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[1]            ; clk          ; clk         ; 0.000        ; -0.001     ; 0.911      ;
+; 0.763 ; cd:caminodatos|regfile:regs|regb~42    ; cd:caminodatos|memdat:memoriadatos|mem~1018 ; clk          ; clk         ; 0.000        ; 0.005      ; 0.920      ;
+; 0.769 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~28       ; clk          ; clk         ; 0.000        ; -0.004     ; 0.917      ;
+; 0.776 ; cd:caminodatos|regfile:regs|regb~61    ; cd:caminodatos|memdat:memoriadatos|mem~1021 ; clk          ; clk         ; 0.000        ; 0.001      ; 0.929      ;
+; 0.778 ; cd:caminodatos|stack:pila|stackmem~48  ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.006      ; 0.936      ;
+; 0.784 ; cd:caminodatos|regfile:regs|regb~33    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.005     ; 0.931      ;
+; 0.801 ; cd:caminodatos|stack:pila|stackmem~128 ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.006      ; 0.959      ;
+; 0.813 ; cd:caminodatos|stack:pila|stackmem~89  ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 0.967      ;
+; 0.819 ; cd:caminodatos|regfile:regs|regb~65    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.004     ; 0.967      ;
+; 0.834 ; cd:caminodatos|stack:pila|stackmem~47  ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 0.988      ;
+; 0.841 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~613  ; clk          ; clk         ; 0.000        ; 0.003      ; 0.996      ;
+; 0.846 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.003      ; 1.001      ;
+; 0.847 ; cd:caminodatos|regfile:regs|regb~113   ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.006     ; 0.993      ;
+; 0.849 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~66       ; clk          ; clk         ; 0.000        ; -0.004     ; 0.997      ;
+; 0.850 ; cd:caminodatos|stack:pila|stackmem~6   ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.004      ;
+; 0.854 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~26       ; clk          ; clk         ; 0.000        ; -0.004     ; 1.002      ;
+; 0.858 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~107      ; clk          ; clk         ; 0.000        ; -0.004     ; 1.006      ;
+; 0.858 ; cd:caminodatos|regfile:regs|regb~49    ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.005     ; 1.005      ;
+; 0.866 ; cd:caminodatos|stack:pila|stackmem~29  ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.020      ;
+; 0.870 ; cd:caminodatos|stack:pila|stackmem~83  ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.001     ; 1.021      ;
+; 0.888 ; cd:caminodatos|stack:pila|stackmem~8   ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.042      ;
+; 0.891 ; cd:caminodatos|stack:pila|stackmem~24  ; cd:caminodatos|registro:PCR|q[4]            ; clk          ; clk         ; 0.000        ; -0.002     ; 1.041      ;
+; 0.897 ; cd:caminodatos|regfile:regs|regb~112   ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; 0.004      ; 1.053      ;
+; 0.899 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~67       ; clk          ; clk         ; 0.000        ; -0.004     ; 1.047      ;
+; 0.908 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[2]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.060      ;
+; 0.910 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.003      ; 1.065      ;
+; 0.912 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.004      ; 1.068      ;
+; 0.913 ; cd:caminodatos|stack:pila|stackmem~125 ; cd:caminodatos|registro:PCR|q[5]            ; clk          ; clk         ; 0.000        ; -0.001     ; 1.064      ;
+; 0.915 ; cd:caminodatos|stack:pila|stackmem~88  ; cd:caminodatos|registro:PCR|q[8]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.069      ;
+; 0.922 ; cd:caminodatos|regfile:regs|regb~38    ; cd:caminodatos|memdat:memoriadatos|mem~1014 ; clk          ; clk         ; 0.000        ; 0.004      ; 1.078      ;
+; 0.924 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|regfile:regs|regb~16         ; clk          ; clk         ; 0.000        ; 0.001      ; 1.077      ;
+; 0.924 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.003      ; 1.079      ;
+; 0.928 ; cd:caminodatos|regfile:regs|regb~45    ; cd:caminodatos|memdat:memoriadatos|mem~1021 ; clk          ; clk         ; 0.000        ; 0.001      ; 1.081      ;
+; 0.936 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~245  ; clk          ; clk         ; 0.000        ; 0.003      ; 1.091      ;
+; 0.941 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.001     ; 1.092      ;
+; 0.942 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~86       ; clk          ; clk         ; 0.000        ; -0.002     ; 1.092      ;
+; 0.945 ; cd:caminodatos|stack:pila|stackmem~7   ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.099      ;
+; 0.947 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~6        ; clk          ; clk         ; 0.000        ; -0.002     ; 1.097      ;
+; 0.952 ; cd:caminodatos|regfile:regs|regb~52    ; cd:caminodatos|memdat:memoriadatos|mem~1012 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.104      ;
+; 0.953 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~46       ; clk          ; clk         ; 0.000        ; -0.003     ; 1.102      ;
+; 0.953 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~9        ; clk          ; clk         ; 0.000        ; -0.002     ; 1.103      ;
+; 0.954 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~29       ; clk          ; clk         ; 0.000        ; -0.002     ; 1.104      ;
+; 0.959 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~89       ; clk          ; clk         ; 0.000        ; -0.002     ; 1.109      ;
+; 0.959 ; cd:caminodatos|stack:pila|stackmem~27  ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.002      ; 1.113      ;
+; 0.961 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.113      ;
+; 0.961 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~59       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.113      ;
+; 0.961 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~19       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.113      ;
+; 0.962 ; cd:caminodatos|regfile:regs|regb~61    ; cd:caminodatos|memdat:memoriadatos|mem~365  ; clk          ; clk         ; 0.000        ; 0.002      ; 1.116      ;
+; 0.965 ; cd:caminodatos|regfile:regs|regb~44    ; cd:caminodatos|memdat:memoriadatos|mem~620  ; clk          ; clk         ; 0.000        ; -0.003     ; 1.114      ;
+; 0.965 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|regfile:regs|regb~16         ; clk          ; clk         ; 0.000        ; 0.001      ; 1.118      ;
+; 0.967 ; cd:caminodatos|registro:PCR|q[6]       ; cd:caminodatos|stack:pila|stackmem~126      ; clk          ; clk         ; 0.000        ; -0.003     ; 1.116      ;
+; 0.968 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~229  ; clk          ; clk         ; 0.000        ; 0.005      ; 1.125      ;
+; 0.971 ; cd:caminodatos|regfile:regs|regb~80    ; cd:caminodatos|memdat:memoriadatos|mem~320  ; clk          ; clk         ; 0.000        ; -0.004     ; 1.119      ;
+; 0.971 ; cd:caminodatos|registro:PCR|q[4]       ; cd:caminodatos|stack:pila|stackmem~64       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.123      ;
+; 0.974 ; cd:caminodatos|registro:PCR|q[8]       ; cd:caminodatos|stack:pila|stackmem~49       ; clk          ; clk         ; 0.000        ; -0.003     ; 1.123      ;
+; 0.974 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[7]            ; clk          ; clk         ; 0.000        ; 0.003      ; 1.129      ;
+; 0.975 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~1015 ; clk          ; clk         ; 0.000        ; -0.001     ; 1.126      ;
+; 0.975 ; cd:caminodatos|stack:pila|stackmem~106 ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.003      ; 1.130      ;
+; 0.978 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|stack:pila|stackmem~69       ; clk          ; clk         ; 0.000        ; 0.000      ; 1.130      ;
+; 0.980 ; cd:caminodatos|stack:pila|stackmem~40  ; cd:caminodatos|registro:PCR|q[0]            ; clk          ; clk         ; 0.000        ; -0.002     ; 1.130      ;
+; 0.982 ; cd:caminodatos|regfile:regs|regb~53    ; cd:caminodatos|memdat:memoriadatos|mem~197  ; clk          ; clk         ; 0.000        ; -0.002     ; 1.132      ;
+; 0.982 ; cd:caminodatos|regfile:regs|regb~1     ; cd:caminodatos|memdat:memoriadatos|mem~1009 ; clk          ; clk         ; 0.000        ; -0.007     ; 1.127      ;
+; 0.982 ; cd:caminodatos|stack:pila|stackmem~103 ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.001     ; 1.133      ;
+; 0.988 ; cd:caminodatos|regfile:regs|regb~96    ; cd:caminodatos|memdat:memoriadatos|mem~1008 ; clk          ; clk         ; 0.000        ; -0.004     ; 1.136      ;
+; 0.991 ; cd:caminodatos|stack:pila|sp[0]        ; cd:caminodatos|registro:PCR|q[5]            ; clk          ; clk         ; 0.000        ; -0.001     ; 1.142      ;
+; 0.995 ; cd:caminodatos|stack:pila|stackmem~16  ; cd:caminodatos|registro:PCR|q[6]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.147      ;
+; 0.998 ; cd:caminodatos|regfile:regs|regb~51    ; cd:caminodatos|memdat:memoriadatos|mem~851  ; clk          ; clk         ; 0.000        ; -0.004     ; 1.146      ;
+; 1.001 ; cd:caminodatos|regfile:regs|regb~51    ; cd:caminodatos|memdat:memoriadatos|mem~979  ; clk          ; clk         ; 0.000        ; -0.004     ; 1.149      ;
+; 1.001 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~999  ; clk          ; clk         ; 0.000        ; -0.003     ; 1.150      ;
+; 1.001 ; cd:caminodatos|regfile:regs|regb~39    ; cd:caminodatos|memdat:memoriadatos|mem~615  ; clk          ; clk         ; 0.000        ; -0.003     ; 1.150      ;
+; 1.004 ; cd:caminodatos|registro:PCR|q[7]       ; cd:caminodatos|stack:pila|stackmem~49       ; clk          ; clk         ; 0.000        ; -0.003     ; 1.153      ;
+; 1.005 ; cd:caminodatos|registro:PCR|q[9]       ; cd:caminodatos|registro:PCR|q[9]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.157      ;
+; 1.006 ; cd:caminodatos|stack:pila|stackmem~3   ; cd:caminodatos|registro:PCR|q[3]            ; clk          ; clk         ; 0.000        ; -0.002     ; 1.156      ;
+; 1.007 ; cd:caminodatos|registro:PCR|q[2]       ; cd:caminodatos|stack:pila|sp[1]             ; clk          ; clk         ; 0.000        ; 0.001      ; 1.160      ;
++-------+----------------------------------------+---------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clk'                                                                                        ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                      ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk   ; Rise       ; clk                                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:carry|q                  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:carry|q                  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:neg|q                    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:neg|q                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|ffd:zer|q                    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|ffd:zer|q                    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~0    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~0    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~10   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~10   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~100  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~100  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1000 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1000 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1001 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1001 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1002 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1002 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1003 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1003 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1004 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1004 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1005 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1005 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1006 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1006 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1007 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1007 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1008 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1008 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1009 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1009 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~101  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~101  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1010 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1010 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1011 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1011 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1012 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1012 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1013 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1013 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1014 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1014 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1015 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1015 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1016 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1016 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1017 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1017 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1018 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1018 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1019 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1019 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~102  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~102  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1020 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1020 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1021 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1021 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1022 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1022 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1023 ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~1023 ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~103  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~103  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~104  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~104  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~105  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~105  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~106  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~106  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~107  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~107  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~108  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~108  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~109  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~109  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~11   ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~11   ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~110  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~110  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~111  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~111  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~112  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~112  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~113  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~113  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~114  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~114  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~115  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~115  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~116  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~116  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~117  ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~117  ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; cd:caminodatos|memdat:memoriadatos|mem~118  ;
++--------+--------------+----------------+------------------+-------+------------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; reset     ; clk        ; 0.711 ; 0.711 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; reset     ; clk        ; 0.221 ; 0.221 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Clock to Output Times                                                     ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 4.531 ; 4.531 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 4.465 ; 4.465 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 4.366 ; 4.366 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 4.111 ; 4.111 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 4.228 ; 4.228 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 4.431 ; 4.431 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 4.531 ; 4.531 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 4.054 ; 4.054 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 4.116 ; 4.116 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 4.112 ; 4.112 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 4.134 ; 4.134 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                             ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 4.054 ; 4.054 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 4.465 ; 4.465 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 4.366 ; 4.366 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 4.111 ; 4.111 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 4.228 ; 4.228 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 4.431 ; 4.431 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 4.531 ; 4.531 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 4.054 ; 4.054 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 4.116 ; 4.116 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 4.112 ; 4.112 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 4.134 ; 4.134 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                              ;
++------------------+------------+-------+----------+---------+---------------------+
+; Clock            ; Setup      ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+------------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -18.819    ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+;  clk             ; -18.819    ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+; Design-wide TNS  ; -19596.8   ; 0.0   ; 0.0      ; 0.0     ; -1625.669           ;
+;  clk             ; -19596.800 ; 0.000 ; N/A      ; N/A     ; -1625.669           ;
++------------------+------------+-------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; reset     ; clk        ; 2.887 ; 2.887 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Hold Times                                                            ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; reset     ; clk        ; 0.221 ; 0.221 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Clock to Output Times                                                     ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 8.833 ; 8.833 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 8.618 ; 8.618 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 8.327 ; 8.327 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 7.953 ; 7.953 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 7.995 ; 7.995 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 8.699 ; 8.699 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 8.833 ; 8.833 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 7.667 ; 7.667 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 7.947 ; 7.947 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 7.964 ; 7.964 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 7.976 ; 7.976 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++---------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                             ;
++---------------+------------+-------+-------+------------+-----------------+
+; Data Port     ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++---------------+------------+-------+-------+------------+-----------------+
+; pc_salida[*]  ; clk        ; 4.054 ; 4.054 ; Rise       ; clk             ;
+;  pc_salida[0] ; clk        ; 4.465 ; 4.465 ; Rise       ; clk             ;
+;  pc_salida[1] ; clk        ; 4.366 ; 4.366 ; Rise       ; clk             ;
+;  pc_salida[2] ; clk        ; 4.111 ; 4.111 ; Rise       ; clk             ;
+;  pc_salida[3] ; clk        ; 4.228 ; 4.228 ; Rise       ; clk             ;
+;  pc_salida[4] ; clk        ; 4.431 ; 4.431 ; Rise       ; clk             ;
+;  pc_salida[5] ; clk        ; 4.531 ; 4.531 ; Rise       ; clk             ;
+;  pc_salida[6] ; clk        ; 4.054 ; 4.054 ; Rise       ; clk             ;
+;  pc_salida[7] ; clk        ; 4.116 ; 4.116 ; Rise       ; clk             ;
+;  pc_salida[8] ; clk        ; 4.112 ; 4.112 ; Rise       ; clk             ;
+;  pc_salida[9] ; clk        ; 4.134 ; 4.134 ; Rise       ; clk             ;
++---------------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------+
+; Setup Transfers                                                    ;
++------------+----------+-----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths  ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+-----------+----------+----------+----------+
+; clk        ; clk      ; 199280472 ; 0        ; 0        ; 0        ;
++------------+----------+-----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++--------------------------------------------------------------------+
+; Hold Transfers                                                     ;
++------------+----------+-----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths  ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+-----------+----------+----------+----------+
+; clk        ; clk      ; 199280472 ; 0        ; 0        ; 0        ;
++------------+----------+-----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 177   ; 177  ;
+; Unconstrained Output Ports      ; 10    ; 10   ;
+; Unconstrained Output Port Paths ; 10    ; 10   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sat Mar 14 23:08:40 2026
+Info: Command: quartus_sta actividad2_1 -c actividad2_1
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332104): Reading SDC File: 'DE1.sdc'
+Warning (332174): Ignored filter at DE1.sdc(1): CLOCK_50 could not be matched with a port
+Warning (332049): Ignored create_clock at DE1.sdc(1): Argument <targets> is an empty collection
+    Info (332050): create_clock -name {CLOCK_50} -period 20.000 [get_ports {CLOCK_50}]
+Warning (332174): Ignored filter at DE1.sdc(5): SW[*] could not be matched with a port
+Warning (332049): Ignored set_false_path at DE1.sdc(5): Argument <from> is an empty collection
+    Info (332050): set_false_path -from [get_ports {SW[*]}] -to [all_registers]
+Warning (332174): Ignored filter at DE1.sdc(6): KEY[*] could not be matched with a port
+Warning (332049): Ignored set_false_path at DE1.sdc(6): Argument <from> is an empty collection
+    Info (332050): set_false_path -from [get_ports {KEY[*]}] -to [all_registers]
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -18.819
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):   -18.819    -19596.800 clk 
+Info (332146): Worst-case hold slack is 0.445
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.445         0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.631
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.631     -1625.669 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -6.430
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -6.430     -6585.638 clk 
+Info (332146): Worst-case hold slack is 0.215
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.215         0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380     -1330.380 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4590 megabytes
+    Info: Processing ended: Sat Mar 14 23:08:41 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+

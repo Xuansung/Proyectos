@@ -17,6 +17,7 @@ begin
     4'b0110: s = -a;
     4'b0111: s = -b;
     4'b1000: s = b;
+    default: s = 17'b0;
   endcase
 end
 
