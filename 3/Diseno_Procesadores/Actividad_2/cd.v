@@ -29,10 +29,10 @@ module cd(input wire clk, reset, r_inm, s_inc, we3, wef, push, pop, m_wr, input 
     // ampliación
 
     mux4 #(16) muxescritura(16'b0, salida_alu, salida_memoria, inmediato, s_wd, wd3);
-    stack pila(clk, salida_sum, push, pop, salida_pila, reset);
+    stack pila(clk, reset, salida_sum, push, pop, salida_pila );
     memdat memoriadatos(clk, m_wr, salida_alu, rd2, salida_memoria);
     mux2 #(10) muxpila(pc_nuevo_inc, salida_pila, pop, pc_nuevo);
-    mux2 #(16) muxr1(rd2, inmediato, r_inm, salida_muxinm);
+    mux2 #(16) muxr1(rd1, inmediato, r_inm, salida_muxinm);
 
     assign pc_salida = pc;
 

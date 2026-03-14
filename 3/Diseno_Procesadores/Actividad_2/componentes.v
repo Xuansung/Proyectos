@@ -7,11 +7,11 @@ module regfile(input  wire        clk,
                input  wire [15:0]  wd3, 			 //dato a escribir
                output wire [15:0]  rd1, rd2);     //datos leidos
 
-  reg [15:0] regb[0:15]; //memoria de 16 registros de 16 bits de ancho
+  reg [15:0] regb [0:15]; //memoria de 16 registros de 16 bits de ancho
 
   initial
   begin
-    $readmemb("C:/Users/estudiante/Downloads/proyect1_act1/regfile.dat",regb); // inicializa los registros a valores conocidos
+    $readmemb("C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/regfile.dat",regb); // inicializa los registros a valores conocidos
   end  
   
   // El registro 0 siempre es cero

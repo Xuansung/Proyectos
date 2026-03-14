@@ -16,7 +16,6 @@ begin
     4'b0101: s = a | b;
     4'b0110: s = -a;
     4'b0111: s = -b;
-	default: s = 17'bx; //desconocido en cualquier otro caso (x o z), por si se modifica el código
   endcase
 end
 
@@ -26,3 +25,4 @@ assign y = s[15:0];
 assign zero = ~(|y);   //operador de reducción |y hace la or de los bits del vector 'y' y devuelve 1 bit resultado
 assign zneg = y[15]; //El bit más significativo si es negativo.
 assign zcarry = s[16]; //El bit 17 de carry. 
+endmodule

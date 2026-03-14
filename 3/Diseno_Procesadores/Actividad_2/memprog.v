@@ -8,7 +8,7 @@ module memprog(input  wire        clk,
 
   initial
   begin
-    $readmemb("C:/Users/estudiante/Downloads/proyect1_act1/progfile.dat",mem); // inicializa la memoria del fichero en texto binario
+    $readmemb("C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/progfile.dat",mem); // inicializa la memoria del fichero en texto binario
   end
   
   assign rd = mem[a];
@@ -26,20 +26,23 @@ module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [
   assign rd = mem[a];
 endmodule
 
-module stack(input wire clk, reset, input wire [9:0] wd, input wire push, input wire pop, output wire [9:0] rd ); // pila para los saltos de subrutina
+module stack(input wire clk, reset, input wire [9:0] wd, input wire push, input wire pop, output reg [9:0] rd ); // pila para los saltos de subrutina
   reg [9:0] stackmem[0:15];
   reg [3:0] sp;
   always @(posedge clk) begin
-    if (reset) sp <= 4'b0;
+    if (reset) begin
+      sp <= 4'd0;
+    end 
     else if (push) begin
       stackmem[sp] <= wd;
-      sp <= sp + 1;
+      sp <= sp + 4'd1;
+    end 
+    else if (pop) begin
+      sp <= sp - 4'd1;
     end
-    if (pop) begin
-      sp = sp - 1;
-    end
-
-    assign rd = stackmem[sp];
+  end
+  always @(*) begin
+    rd = stackmem[sp - 4'd1]; 
   end
 endmodule
 

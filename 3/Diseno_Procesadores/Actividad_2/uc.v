@@ -41,7 +41,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, we3, wf
                 push = 1'b0;
                 r_inm = 1'b1;
                 m_wr = 1'b0;
-                op_alu = 4'b0000;
+                op_alu = 4'b0010;
             end
             8'b00001001: begin // GUARDA EN MEMORIA(SW)
                 wf = 1'b0;
@@ -52,10 +52,10 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, we3, wf
                 push = 1'b0;
                 r_inm = 1'b1;
                 m_wr = 1'b1;
-                op_alu = 4'b0000;
+                op_alu = 4'b0010;
             end
             8'b00010010: begin // SALTO A SUBRUTINA(CALL X)
-                s_inc = 1'b1;
+                s_inc = 1'b0;
                 wd = 2'b00;
                 wf = 1'b0;
                 we3 = 1'b0;
