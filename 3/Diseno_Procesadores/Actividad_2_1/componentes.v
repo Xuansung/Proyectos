@@ -11,7 +11,7 @@ module regfile(input  wire        clk,
 
   initial
   begin
-    $readmemb("C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/regfile.dat",regb); // inicializa los registros a valores conocidos
+    $readmemb("C:/Users/estudiante/Downloads/proyect1_act1/regfile.dat",regb); // inicializa los registros a valores conocidos
   end  
   
   // El registro 0 siempre es cero
@@ -27,8 +27,8 @@ module regfile(input  wire        clk,
 endmodule
 
 //modulo sumador  
-module sum(input  wire [15:0] a, b,
-             output wire [15:0] y);
+module sum #(parameter WIDTH)(input  wire [WIDTH-1:0] a, b,
+             output wire [WIDTH-1:0] y);
 
   assign y = a + b;
 
@@ -83,4 +83,3 @@ module ffd(input wire clk, reset, d, carga, output reg q);
 	      q <= d;
 
 endmodule 
-
