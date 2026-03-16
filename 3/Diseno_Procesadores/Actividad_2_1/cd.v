@@ -24,7 +24,7 @@ module cd(input wire clk, reset, r_inm, s_inc, we3, wef, push, pop, m_wr, s_wd, 
 
     alu mialu(rd1, salida_muxinm, op_alu, salida_alu, zalu, zneg, zcarry);
     mux2 #(10) muxpc(dir_salto, salida_sum, s_inc, pc_nuevo_inc);
-    sum suma_inc(10'b0000000001, pc, salida_sum);
+    sum #(10) suma_inc(10'b0000000001, pc, salida_sum);
 
     // ampliación
     mux2 #(16) muxescritura(salida_alu, salida_memoria, s_wd, wd3);
