@@ -38,7 +38,7 @@ const char* opcodes[] = { "00010001", "00000010", "00000011", "00000001", "00100
 
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
-const char* operands[] = { "CR", "D", "D", "D", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "", "D", "", "", "D", "D", "D", "D", "RRC", "RRC", "RRC", "RRC" };
+const char* operands[] = { "CR", "D", "D", "D", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "", "D", "", "", "D", "D", "D", "D", "RRC", "RRC", "RRC", "RRC" };
 
 //Tamaños de operando
 //Tamaño en bits de una constante C (o dirección de datos si así se considera)
@@ -59,8 +59,8 @@ const int posoper[NUMINS][MAXNUMOPER] = { {23, 19, 0},
                                          {15, 0, 0},
                                          {23, 7, 3},
                                          {23, 7, 3},
-                                         {23, 7, 3},
-                                         {23, 7, 3},
+                                         {23, 7, 0},
+                                         {23, 7, 0},
                                          {23, 7, 3},
                                          {23, 7, 3},
                                          {23, 7, 3},
@@ -274,8 +274,7 @@ void processMnemonic(FILE* file, char* line, int numread, bool *code, int srclin
         int num; //Valor devuelto pos scanf como numero de operandos reconocidos
         int ops[MAXNUMOPER] = { 0, 0, 0 }; //Operandos posibles, máximo tres operandos reales de los cuales solo uno puede ser un simbolo que se resolverá o no ahora 
         char simb[MAXSYMBOLLEN + 1] = ""; //símbolo
-        strncat_s(fmtStr, MAXLINE, " ", 1); //Permitimos ws iniciales
-        strncat_s(fmtStrSym, MAXLINE, " ", 1); //Permitimos ws iniciales
+        strcat(fmtStr, " "); //Permitimos ws iniciales
         for (int i = 0; i < numoper; i++) { //Procesamos cada tipo de operando?
             switch (operands[id][i]) { 
             case 'R':
