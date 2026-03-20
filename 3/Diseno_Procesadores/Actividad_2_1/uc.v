@@ -1,4 +1,4 @@
-module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, output reg [3:0] op_alu);
+module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, halt, output reg [3:0] op_alu);
     always @(*) begin
         s_inc = 1'b0; // Flag incremento pc
         pop = 1'b0; // Flag de pop
@@ -9,6 +9,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
         we3 = 1'b0; // Flag escritura banco registros
         wf = 1'b0; //Flag alu
         op_alu = 4'b0000; //Opcode alu 
+        halt = 1'b0; // Flag de halt
         casez (opcode) 
             8'b0010????: begin // ALU(reg)  
                 wf = 1'b1;
@@ -66,7 +67,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 op_alu = 4'b0000;
             end
             8'b00010011: begin // RETORNO DE SUBRUTINA (RET)
-                s_inc = 1'b0;
+                s_inc = 1'b1;
                 wd = 1'b0;
                 wf = 1'b0;
                 we3 = 1'b0;
@@ -110,7 +111,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 op_alu = 4'b0000;
             end
             8'b00000001: begin // SALTO COND SI Z ES 0 (BNE)
-                s_inc = (z == 1'b0) ? 1'b0 : 1'b1;
+                s_inc = z;
                 wd = 1'b0;
                 we3 = 1'b0;
                 wf = 1'b0;
@@ -175,7 +176,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 m_wr = 1'b0;
                 op_alu = 4'b0000;
             end
-            8'b00011111: begin // INSTRUCCION HALT
+            8'b11111111: begin // INSTRUCCION HALT
                 s_inc = 1'b0;
                 wd = 1'b0;
                 we3 = 1'b0;
@@ -185,6 +186,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 r_inm = 1'b0;
                 m_wr = 1'b0;
                 op_alu = 4'b0000;
+                halt = 1'b1;
             end
             default: begin
                 s_inc = 1'b0;
