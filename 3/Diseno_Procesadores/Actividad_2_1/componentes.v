@@ -11,7 +11,7 @@ module regfile(input  wire        clk,
 
   initial
   begin
-    $readmemb("C:/Users/estudiante/Downloads/proyect1_act1/regfile.dat",regb); // inicializa los registros a valores conocidos
+    $readmemb("C:/Users/albxb/Downloads/programas/Verilog/proyecto1/regfile.dat",regb); // inicializa los registros a valores conocidos
   end  
   
   // El registro 0 siempre es cero
@@ -36,13 +36,13 @@ endmodule
 
 //modulo registro para modelar el PC, cambia en cada flanco de subida de reloj o de reset
 module registro #(parameter WIDTH = 10)
-              (input wire             clk, reset,
+              (input wire             clk, reset, halt,
                input wire [WIDTH-1:0] d, 
                output reg [WIDTH-1:0] q);
 
   always @(posedge clk, posedge reset)
     if (reset) q <= {WIDTH{1'b0}};
-    else       q <= d;
+    else if (!halt) q <= d;
 
 endmodule
 
@@ -80,6 +80,6 @@ module ffd(input wire clk, reset, d, carga, output reg q);
 	    q <= 1'b0;
 	  else
 	    if (carga)
-	      q <= d;
+	      q <= ~d;
 
 endmodule 
