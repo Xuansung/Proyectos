@@ -15,7 +15,7 @@ module cd(input wire clk, reset, r_inm, s_inc, we3, wef, push, pop, halt, m_wr, 
     assign inmediato = instruccion[15:0];
 
     registro PCR(clk, reset, halt, pc_nuevo, pc);
-    regfile regs(clk, we3, ra1, ra2, wa3, wd3, rd1, rd2);
+    regfile regs(~clk, we3, ra1, ra2, wa3, wd3, rd1, rd2);
     memprog memoriaprograma(clk, pc, instruccion);
 
     // flags
