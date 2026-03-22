@@ -26,10 +26,10 @@
 #define INSTSIZE 32       
 
 //Nemónico de cada instrucción, no puede haber dos iguales
-const char* mnemonics[] = { "li", "jmp", "jz", "jnz", "add", "sub", "eq", "not", "and", "or", "nega", "negb", "nop", "call", "ret", "halt", "jc", "jnc", "jn", "jnn", "lw", "sw", "addi", "subi" };
+const char* mnemonics[] = { "li", "add", "sub", "eq", "not", "and", "or", "nega", "negb", "addi", "subi", "lw", "sw", "call", "ret", "jmp", "jz", "jnz", "jc", "jnc", "jn", "jnn", "halt", "nop"};
 
 //Opcode de cada instrucción
-const char* opcodes[] = { "00010001", "00000010", "00000011", "00000001", "00100010", "00100011", "00100000", "00100001", "00100100", "00100101", "00100110", "00100111", "00000000", "00010010", "00010011", "11111111", "00000100", "00000101", "00000110", "00000111", "00001000", "00001001", "00110010", "00110011" };
+const char* opcodes[] = { "00010001","00100010","00100011","00100000","00100001","00100100","00100101","00100110","00100111","00110010","00110011","00001000","00001001","00010010","00010011","00000010","00000011","00000001","00000100","00000101","00000111","00000110","11111111","00000000"};
 
 // Operandos
 
@@ -38,7 +38,7 @@ const char* opcodes[] = { "00010001", "00000010", "00000011", "00000001", "00100
 
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
-const char* operands[] = { "RC", "D", "D", "D", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "", "D", "", "", "D", "D", "D", "D", "RRC", "RRC", "RRC", "RRC" };
+const char* operands[] = { "RC", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "RRC", "RRC", "RRC", "RRC", "D", "", "D", "D", "D", "D", "D", "D", "D", "", "" };
 
 //Tamaños de operando
 //Tamaño en bits de una constante C (o dirección de datos si así se considera)
@@ -53,31 +53,30 @@ const char* operands[] = { "RC", "D", "D", "D", "RRR", "RRR", "RR", "RR", "RRR",
 
 //Posiciones del bit más significativo de cada operando en la instrucción codificada
 //0 significa no usado
-const int posoper[NUMINS][MAXNUMOPER] = {{23, 15, 0},
-                                         {15, 0, 0},
-                                         {15, 0, 0},
-                                         {15, 0, 0},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {23, 19, 0},
-                                         {23, 19, 0},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {0, 0, 0},
-                                         {15, 0, 0},
-                                         {0, 0, 0},
-                                         {0, 0, 0},
-                                         {15, 0, 0},
-                                         {15, 0, 0},
-                                         {15, 0, 0},
-                                         {15, 0, 0},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {23, 19, 15},
-                                         {23, 19, 15}};
-
+const int posoper[NUMINS][MAXNUMOPER] = {{23, 15, 0},   // li
+                                         {23, 19, 15},  // add
+                                         {23, 19, 15},  // sub
+                                         {23, 19, 0},   // eq
+                                         {23, 19, 0},   // not
+                                         {23, 19, 15},  // and
+                                         {23, 19, 15},  // or
+                                         {23, 19, 15},  // nega
+                                         {23, 19, 15},  // negb
+                                         {23, 19, 15},  // addi
+                                         {23, 19, 15},  // subi
+                                         {23, 19, 15},  // lw
+                                         {23, 19, 15},  // sw                              
+                                         {15, 0, 0},    // call
+                                         {0, 0, 0},     // ret
+                                         {15, 0, 0},    // jmp
+                                         {15, 0, 0},    // jz
+                                         {15, 0, 0},    // jnz
+                                         {15, 0, 0},    // jc
+                                         {15, 0, 0},    // jnz
+                                         {15, 0, 0},    // jn
+                                         {15, 0, 0},    // jnn
+                                         {0, 0, 0},     // halt
+                                         {0, 0, 0}};    // nop
 
 //*************************************************************************************************************************************************************************
 // Normalmente no sería necesario tocar el código de más abajo para adaptar a un ensamblador nuevo, salvo código de proceso de operandos nuevos como salto relativo
