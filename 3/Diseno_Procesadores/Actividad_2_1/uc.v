@@ -1,4 +1,4 @@
-module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, halt, output reg [3:0] op_alu);
+module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, halt, output reg [3:0] op_alu);
     always @(*) begin
         s_inc = 1'b0; // Flag incremento pc
         pop = 1'b0; // Flag de pop
@@ -100,7 +100,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 op_alu = 4'bzzzz;
             end
             8'b00000011: begin // SALTO COND SI Z ES 1 (BEQ)
-                s_inc = (z == 1'b1) ? 1'b0 : 1'b1;
+                s_inc = (zero == 1'b1) ? 1'b0 : 1'b1;
                 wd = 1'b0;
                 we3 = 1'b0;
                 wf = 1'b0;
@@ -111,7 +111,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 op_alu = 4'bzzzz;
             end
             8'b00000001: begin // SALTO COND SI Z ES 0 (BNE)
-                s_inc = z;
+                s_inc = (zero == 1'b0) ? 1'b0 : 1'b1;
                 wd = 1'b0;
                 we3 = 1'b0;
                 wf = 1'b0;
@@ -143,7 +143,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 m_wr = 1'b0;
                 op_alu = 4'bzzzz;
             end
-            8'b00000111: begin // SALTO COND SI N ES 1 (BNN)
+            8'b00000111: begin // SALTO COND SI N ES 1 (BNS)
                 s_inc = (n == 1'b1) ? 1'b0 : 1'b1;
                 wd = 1'b0;
                 we3 = 1'b0;
@@ -154,7 +154,7 @@ module uc(input wire [7:0] opcode, input wire z, c, n, output reg s_inc, wd, we3
                 m_wr = 1'b0;
                 op_alu = 4'bzzzz;
             end
-            8'b00000110: begin // SALTO COND SI N ES 0 (BNS)
+            8'b00000110: begin // SALTO COND SI N ES 0 (BNN)
                 s_inc = (n == 1'b0) ? 1'b0 : 1'b1;
                 wd = 1'b0;
                 we3 = 1'b0;
