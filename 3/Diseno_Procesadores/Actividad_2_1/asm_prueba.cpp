@@ -26,10 +26,10 @@
 #define INSTSIZE 32       
 
 //Nemónico de cada instrucción, no puede haber dos iguales
-const char* mnemonics[] = { "li", "add", "sub", "eq", "not", "and", "or", "nega", "negb", "addi", "subi", "lw", "sw", "call", "ret", "jmp", "jz", "jnz", "jc", "jnc", "jn", "jnn", "halt", "nop"};
+const char* mnemonics[] = { "li", "add", "sub", "eq", "not", "and", "or", "neg", "addi", "subi", "lw", "sw", "call", "ret", "jmp", "jz", "jnz", "jc", "jnc", "jn", "jnn", "halt", "nop"};
 
 //Opcode de cada instrucción
-const char* opcodes[] = { "00010001","00100010","00100011","00100000","00100001","00100100","00100101","00100110","00100111","00110010","00110011","00001000","00001001","00010010","00010011","00000010","00000011","00000001","00000100","00000101","00000111","00000110","11111111111111111111111111111111","00000000"};
+const char* opcodes[] = { "00010001","00100010","00100011","00100000","00100001","00100100","00100101","00100110","00110010","00110011","00001000","00001001","00010010","00010011","00000010","00000011","00000001","00000100","00000101","00000111","00000110","11111111111111111111111111111111","00000000"};
 
 // Operandos
 
@@ -38,7 +38,7 @@ const char* opcodes[] = { "00010001","00100010","00100011","00100000","00100001"
 
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
-const char* operands[] = { "RC", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "RRC", "RRC", "RRC", "RRC", "D", "", "D", "D", "D", "D", "D", "D", "D", "", "" };
+const char* operands[] = { "RC", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RR", "RRC", "RRC", "RRC", "RRC", "D", "", "D", "D", "D", "D", "D", "D", "D", "", "" };
 
 //Tamaños de operando
 //Tamaño en bits de una constante C (o dirección de datos si así se considera)
@@ -60,8 +60,7 @@ const int posoper[NUMINS][MAXNUMOPER] = {{23, 15, 0},   // li
                                          {23, 19, 0},   // not
                                          {23, 19, 15},  // and
                                          {23, 19, 15},  // or
-                                         {23, 19, 15},  // nega
-                                         {23, 19, 15},  // negb
+                                         {23, 19, 0},  // nega
                                          {23, 19, 15},  // addi
                                          {23, 19, 15},  // subi
                                          {23, 19, 15},  // lw
