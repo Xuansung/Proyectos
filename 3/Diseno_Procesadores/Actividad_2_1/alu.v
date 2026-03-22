@@ -16,6 +16,7 @@ begin
     4'b0101: s = {1'b0, a | b};          // OR
     4'b0110: s = {1'b0, -a[15:0]};       // NEG A (Forzamos 16 bits antes de expandir)
     4'b0111: s = {1'b0, -b[15:0]};       // NEG B
+	4'b1000: s = {1'b0, b};            // B
     default: s = 17'b0;
   endcase
 end
