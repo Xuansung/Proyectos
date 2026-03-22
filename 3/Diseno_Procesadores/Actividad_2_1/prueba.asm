@@ -5,7 +5,7 @@ inicio:
     sub r4 , r2 , r1
     eq r5 , r1
     not r6 , r5
-    sw r7 , r1 , 0
+    sw r1 , r1 , 0
     lw r8 , r1 , 0
     nop
     call subrutina
