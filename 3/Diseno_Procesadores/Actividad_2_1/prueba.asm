@@ -4,7 +4,8 @@ inicio:
     add r3 , r1 , r2
     sub r4 , r2 , r1
     eq r5 , r1
-    not r6 , r5
+    neg r6 , r2
+    not r7 , r5
     sw r1 , r1 , 0
     lw r8 , r1 , 0
     nop
