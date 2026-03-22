@@ -1,14 +1,12 @@
 inicio:
-    li 5 , r1
-    li 10 , r2
+    li r1 , 5
+    li r2 , 10
     add r3 , r1 , r2
     sub r4 , r2 , r1
     eq r5 , r1
     not r6 , r5
-    and r7 , r1 , r2
-    or r8 , r1 , r2
-    nega r9 , r1 , r0
-    negb r10 , r0 , r2
+    sw r7 , r1 , 0
+    lw r8 , r1 , 0
     nop
     call subrutina
     addi r3 , r3 , 1
@@ -27,7 +25,7 @@ part2:
 part3:
     halt
 subrutina:
-    li 1 , r1
+    li r1 , 1
     subi r1 , r1 , 1
     jnz fin
     ret
