@@ -4,6 +4,15 @@
  * Diseño de Procesadores
  *
  */
+#ifdef __GNUC__
+#define strcpy_s(dest, size, src) strcpy(dest, src)
+#define strncpy_s(dest, size, src, count) strncpy(dest, src, count)
+#define strcat_s(dest, size, src) strcat(dest, src)
+#define strncat_s(dest, size, src, count) strncat(dest, src, count)
+#define fscanf_s fscanf
+#define fopen_s(pFile, filename, mode) ((*(pFile) = fopen(filename, mode)) == NULL)
+#endif
+// Para poder añadir las funciones de microsoft
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -14,13 +23,13 @@
 //Definición del lenguaje ensamblador
 
 //Tamaño en bits de la instrucción
-#define INSTSIZE 16       
+#define INSTSIZE 32       
 
 //Nemónico de cada instrucción, no puede haber dos iguales
-const char* mnemonics[] = { "li", "jmp", "jz", "jnz", "add", "sub", "eq", "not", "and", "or", "nega", "negb", "nop" };
+const char* mnemonics[] = { "li", "add", "sub", "eq", "not", "and", "or", "neg", "addi", "subi", "lw", "sw", "call", "ret", "jmp", "jz", "jnz", "jc", "jnc", "jn", "jnn", "halt", "nop"};
 
 //Opcode de cada instrucción
-const char* opcodes[] = { "0100", "000010", "001000", "000100", "1010", "1011", "1000", "1001", "1100", "1101", "1110", "1111", "000000" };
+const char* opcodes[] = { "00010001","00100010","00100011","00100000","00100001","00100100","00100101","00100110","00110010","00110011","00001000","00001001","00010010","00010011","00000010","00000011","00000001","00000100","00000101","00000111","00000110","11111111111111111111111111111111","00000000"};
 
 // Operandos
 
@@ -29,14 +38,14 @@ const char* opcodes[] = { "0100", "000010", "001000", "000100", "1010", "1011", 
 
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
-const char* operands[] = { "CR", "D", "D", "D", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "RRR", "" };
+const char* operands[] = { "RC", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RR", "RRC", "RRC", "RRC", "RRC", "D", "", "D", "D", "D", "D", "D", "D", "D", "", "" };
 
 //Tamaños de operando
 //Tamaño en bits de una constante C (o dirección de datos si así se considera)
-#define CONSTANTSIZE 8
+#define CONSTANTSIZE 16
 //Tamaño en bits de un campo de registro R
 #define REGFIELDSIZE 4
-//Tamaño en bits de un campo de registro R
+//Tamaño en bits de un campo de destino D
 #define DESTDIRSIZE  10
 
 //Número de instrucciones deducido de la matriz de nemónicos
@@ -44,20 +53,29 @@ const char* operands[] = { "CR", "D", "D", "D", "RRR", "RRR", "RRR", "RRR", "RRR
 
 //Posiciones del bit más significativo de cada operando en la instrucción codificada
 //0 significa no usado
-const int posoper[NUMINS][MAXNUMOPER] = { {11, 3, 0},
-                                         {9, 0, 0},
-                                         {9, 0, 0},
-                                         {9, 0, 0},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {11, 7, 3},
-                                         {0, 0, 0}};  
-
+const int posoper[NUMINS][MAXNUMOPER] = {{23, 15, 0},   // li
+                                         {23, 19, 15},  // add
+                                         {23, 19, 15},  // sub
+                                         {23, 19, 0},   // eq
+                                         {23, 19, 0},   // not
+                                         {23, 19, 15},  // and
+                                         {23, 19, 15},  // or
+                                         {23, 19, 0},  // nega
+                                         {23, 19, 15},  // addi
+                                         {23, 19, 15},  // subi
+                                         {23, 19, 15},  // lw
+                                         {23, 19, 15},  // sw                              
+                                         {15, 0, 0},    // call
+                                         {0, 0, 0},     // ret
+                                         {15, 0, 0},    // jmp
+                                         {15, 0, 0},    // jz
+                                         {15, 0, 0},    // jnz
+                                         {15, 0, 0},    // jc
+                                         {15, 0, 0},    // jnz
+                                         {15, 0, 0},    // jn
+                                         {15, 0, 0},    // jnn
+                                         {0, 0, 0},     // halt
+                                         {0, 0, 0}};    // nop
 
 //*************************************************************************************************************************************************************************
 // Normalmente no sería necesario tocar el código de más abajo para adaptar a un ensamblador nuevo, salvo código de proceso de operandos nuevos como salto relativo
@@ -177,12 +195,11 @@ int getSymbolIdx(int lineadef) {
 int getSymbolValue(const char* sym) {
     int value = -1;
     for (int i = 0; i < numSymb; i++) {
-        if (!strncmp(tablaS[i].Symbol, sym, strlen(sym))) {
+        if (strcmp(tablaS[i].Symbol, sym) == 0) {
             value = tablaS[i].Value;
             break;
         }
     }
-    //printf("Buscando valor del simbolo '%s' y obtenido %d\n", sym, value);
     return value;
 }
 
@@ -255,8 +272,7 @@ void processMnemonic(FILE* file, char* line, int numread, bool *code, int srclin
         int num; //Valor devuelto pos scanf como numero de operandos reconocidos
         int ops[MAXNUMOPER] = { 0, 0, 0 }; //Operandos posibles, máximo tres operandos reales de los cuales solo uno puede ser un simbolo que se resolverá o no ahora 
         char simb[MAXSYMBOLLEN + 1] = ""; //símbolo
-        strncat_s(fmtStr, MAXLINE, " ", 1); //Permitimos ws iniciales
-        strncat_s(fmtStrSym, MAXLINE, " ", 1); //Permitimos ws iniciales
+        strcat(fmtStr, " "); //Permitimos ws iniciales
         for (int i = 0; i < numoper; i++) { //Procesamos cada tipo de operando?
             switch (operands[id][i]) { 
             case 'R':
@@ -285,6 +301,12 @@ void processMnemonic(FILE* file, char* line, int numread, bool *code, int srclin
                     num = fscanf_s(file, fmtStrSym, simb, MAXSYMBOLLEN);
                     //printf("Avanzado al leer simbolo el puntero de fichero a %ld\n", ftell(file));
                     if (num == 1) { //Ha habido suerte, ahora recuperar el valor del símbolo
+                        for (int k = 0; simb[k] != '\0'; k++) {
+                            if (isspace(simb[k]) || simb[k] == '\r' || simb[k] == '\n') {
+                                simb[k] = '\0';
+                                break;
+                            }
+                        }
                         int val = getSymbolValue(simb);
                         if (val != -1) { //Encontrado
                             ops[i] = val;
