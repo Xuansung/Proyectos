@@ -38,7 +38,7 @@ const char* opcodes[] = { "00010001", "00000010", "00000011", "00000001", "00100
 
 // Codificación de los operandos de cada instrucción
 // C: cte datos, D: cte de dirección de código, R: campo de registro
-const char* operands[] = { "CR", "D", "D", "D", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "", "D", "", "", "D", "D", "D", "D", "RRC", "RRC", "RRC", "RRC" };
+const char* operands[] = { "RC", "D", "D", "D", "RRR", "RRR", "RR", "RR", "RRR", "RRR", "RRR", "RRR", "", "D", "", "", "D", "D", "D", "D", "RRC", "RRC", "RRC", "RRC" };
 
 //Tamaños de operando
 //Tamaño en bits de una constante C (o dirección de datos si así se considera)
