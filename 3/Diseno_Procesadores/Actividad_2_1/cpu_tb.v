@@ -4,7 +4,7 @@ module cpu_tb;
 
 
 reg clk, reset;
-wire [9:0] pc_salida; 
+
 
 // generación de reloj clk
 always //siempre activo, no hay condición de activación
@@ -16,11 +16,11 @@ begin
 end
 
 // instanciación del procesador
-cpu micpu(clk, reset, pc_salida);
+cpu micpu(clk, reset);
 
 initial
 begin
-  $dumpfile("C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/DE1_tb.vcd");
+  $dumpfile("C:/Users/estudiante/Downloads/proyect1_act1/cpu_tb.vcd");
   $dumpvars;
   reset = 1;  //a partir del flanco de subida del reset empieza el funcionamiento normal
   #5;
@@ -30,7 +30,7 @@ end
 initial
 begin
 
-  #(30*20);  //Esperamos 20 ciclos o 20 instrucciones
+  #(50*20);  //Esperamos 14 ciclos o 14 instrucciones
   $finish;
 end
 
