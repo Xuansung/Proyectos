@@ -1,4 +1,5 @@
 inicio:
+    li r14 , 0
     li r1 , 5
     li r2 , 10
     add r3 , r1 , r2
@@ -32,3 +33,6 @@ subrutina:
     ret
 fin:
     halt
+timer:
+    addi r14 , r14 , 1
+    ret
