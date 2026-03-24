@@ -1,4 +1,4 @@
-module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, halt, output reg [3:0] op_alu);
+module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, we3, wf, m_wr, r_inm, push, pop, halt, ret, call, output reg [3:0] op_alu);
     always @(*) begin
         s_inc = 1'b0; // Flag incremento pc
         pop = 1'b0; // Flag de pop
@@ -10,6 +10,8 @@ module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, 
         wf = 1'b0; //Flag alu
         op_alu = 4'b0000; //Opcode alu 
         halt = 1'b0; // Flag de halt
+        ret = 1'b0; // Flag de retorno de subrutina
+        call = 1'b0; // Flag de llamada a subrutina
         casez (opcode) 
             8'b0010????: begin // ALU(reg)  
                 wf = 1'b1;
@@ -65,6 +67,7 @@ module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, 
                 r_inm = 1'b1;
                 m_wr = 1'b0;
                 op_alu = 4'bzzzz;
+                call = 1'b1;
             end
             8'b00010011: begin // RETORNO DE SUBRUTINA (RET)
                 s_inc = 1'b1;
@@ -76,6 +79,7 @@ module uc(input wire [7:0] opcode, input wire zero, c, n, output reg s_inc, wd, 
                 r_inm = 1'b0;
                 m_wr = 1'b0;
                 op_alu = 4'bzzzz;
+                ret = 1'b1;
             end
             8'b00010001: begin // INMEDIATO (LI)
                 s_inc = 1'b1;
