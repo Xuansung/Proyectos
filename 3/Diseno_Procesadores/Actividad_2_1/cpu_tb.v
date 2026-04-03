@@ -1,18 +1,12 @@
 `timescale 1 ns / 10 ps
-
 module cpu_tb;
-
-
 reg clk, reset;
 
-
 // generación de reloj clk
-always //siempre activo, no hay condición de activación
+initial clk = 0;  
+always
 begin
-  clk = 1'b1;
-  #10;
-  clk = 1'b0;
-  #10;
+  #10 clk = ~clk;
 end
 
 // instanciación del procesador
@@ -22,16 +16,14 @@ initial
 begin
   $dumpfile("C:/Users/estudiante/Downloads/proyect1_act1/cpu_tb.vcd");
   $dumpvars;
-  reset = 1;  //a partir del flanco de subida del reset empieza el funcionamiento normal
-  #5;
-  reset = 0;  //bajamos el reset 
+  reset = 1;
+  #25;          // esperar 1 flanco de subida completo antes de bajar reset
+  reset = 0;
 end
 
 initial
 begin
-
-  #(50*20);  //Esperamos 14 ciclos o 14 instrucciones
+  #(20000*20); 
   $finish;
 end
-
 endmodule

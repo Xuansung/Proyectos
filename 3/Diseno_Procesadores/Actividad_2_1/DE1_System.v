@@ -16,13 +16,13 @@ module DE1_System(
 	);
 
 	 wire [9:0] pc;
-    cpu micpu(~KEY[3], ~KEY[0], pc);
+    cpu micpu(CLOCK_50, ~KEY[0], pc);
 
     assign LEDR = pc;
 
     //asignar las demas salidas a 0
-    hexdec hex0(pc[3:0], HEX0);
-    hexdec hex1(pc[7:4], HEX1);
+    hexdec(pc[3:0], HEX0);
+    hexdec(pc[8:4], HEX1);
     assign HEX2 = 7'b1111111;
     assign HEX3 = 7'b1111111;
     assign LEDG = 8'b00000000;

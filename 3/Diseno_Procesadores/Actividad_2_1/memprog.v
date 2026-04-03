@@ -8,7 +8,7 @@ module memprog(input  wire        clk,
 
   initial
   begin
-    $readmemb("C:/Users/User/Desktop/Proyectos/3/Diseno_Procesadores/Actividad_2/progfile.dat",mem); // inicializa la memoria del fichero en texto binario
+    $readmemb("C:/Users/albxb/Downloads/programas/Verilog/proyecto1/progfile.dat",mem); // inicializa la memoria del fichero en texto binario
   end
   
   assign rd = mem[a];
@@ -16,8 +16,11 @@ module memprog(input  wire        clk,
 endmodule
 
 module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [15:0] wd, output wire [15:0] rd); // Modulo para la memoria de datos
-  reg [15:0] mem[0:63];
+  reg [15:0] mem[0:511];
 
+  initial begin
+    $readmemb("C:/Users/albxb/Downloads/programas/Verilog/proyecto1/datos.dat", mem); //Lee los datos cargados por primera vez
+  end
   always @(posedge clk) begin
     if (m_wr) mem[a] <= wd;
   end
@@ -44,4 +47,3 @@ module stack(input wire clk, reset, input wire [9:0] wd, input wire push, input 
     rd = stackmem[sp - 4'd1]; 
   end
 endmodule
-

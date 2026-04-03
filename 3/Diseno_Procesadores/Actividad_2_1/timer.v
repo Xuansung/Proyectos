@@ -4,7 +4,7 @@ module timer_1s (
    output reg tick_1s // High for one clock cycle every second
 );
    // 50 million cycles for 1 second at 50 MHz
-   parameter MAX_COUNT = 26'd4; // para simulacion 5 ciclos para generar un tick cada 3 instrucciones, en hardware real seria 26'd50_000_000
+   parameter MAX_COUNT = 26'd49_000_000_000; // para simulacion 5 ciclos para generar un tick cada 3 instrucciones, en hardware real seria 26'd50_000_000
    reg [25:0] counter;
    always @(posedge clk or posedge reset) begin
        if (reset) begin

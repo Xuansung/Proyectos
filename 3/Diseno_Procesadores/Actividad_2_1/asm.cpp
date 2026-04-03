@@ -160,7 +160,7 @@ void addSymbRef(const char* sym, int line, int pos, int bitpos, int numbits) {
         tablaR[numRefs].PosRef = pos;
         tablaR[numRefs].BitPos = bitpos;
         tablaR[numRefs].Size = numbits;
-        // printf("Insert. ref. a símbolo: '%s' ocurrida en la línea fuente %u (instrucción en dir %u) en idx %u de tabla de referencias\n", sym, line, pos, numRefs);
+        //printf("Insert. ref. a símbolo: '%s' ocurrida en la línea fuente %u (instrucción en dir %u) en idx %u de tabla de referencias\n", sym, line, pos, numRefs);
         numRefs++;
     }
     else {
@@ -287,12 +287,18 @@ void processMnemonic(FILE* file, char* line, int numread, bool *code, int srclin
                 break;
             case 'C':
             case 'D':
-                //Podría ser simbólico, intentamos primero con ctes
-                posfile = ftell(file); //guardar posición del fichero de entrada
-                strcat_s(fmtStr, MAXLINE, "%i"); //Permite leer en hex, octal o decimal con notación del C,valores negativos en decimal (se codificarán en complemento a 2)
-                if (i != (numoper - 1)) strcat_s(fmtStr, MAXLINE, " , "); //Si no somos el último operando, consumir ws y coma enmedio
+                // Primero consumir espacios manualmente
+                {
+                    int ch;
+                    do {
+                        ch = fgetc(file);
+                    } while (ch == ' ' || ch == '\t');
+                    ungetc(ch, file); // devolver el primer caracter no-espacio
+                }
+                posfile = ftell(file); //guardar posición DESPUÉS de consumir espacios
+                strcat_s(fmtStr, MAXLINE, "%i");
+                if (i != (numoper - 1)) strcat_s(fmtStr, MAXLINE, " , ");
                 num = fscanf_s(file, fmtStr, &(ops[i]));
-                //printf("Avanzado al leer cte o no el puntero de fichero a %ld\n", ftell(file));
                 if (num != 1) { //No se pudo leer bien el operando
                     fseek(file, posfile, SEEK_SET); //restauramos pos en fichero
                     //printf("Retrocedido el puntero a %ld\n", ftell(file));
@@ -501,11 +507,11 @@ void ensambla(const char* srcfilename, const char* dstfilename)
             else  {
                 seguirflag = 0;
             }
-            //printf("I: %s\n", instrucc);
+             //printf("I: %s\n", instrucc);
             if (codEmitido && (counter < MAXPROGRAMLEN)) {
                 //printf("Copiando la cadena de instrucc %s de tamaño %zu sobre la cadena de contenido ->%s<-\n", instrucc, strlen(instrucc), (char *)progmem[counter]);
                 strcpy_s(progmem[counter], INSTSIZE+1, instrucc);
-                //printf("Programa en dir %u es instrucc %s\n",counter, progmem[counter]);
+                // printf("Programa en dir %u es instrucc %s\n",counter, progmem[counter]);
                 counter++;
             }
         }
@@ -541,7 +547,7 @@ void ensambla(const char* srcfilename, const char* dstfilename)
 
 int main(int argc, char* argv[]){
     const char* inputFile = "test.asm"; // Valor por defecto para el archivo de entrada
-    const char* outputFile = "test.mem"; // Valor por defecto para el archivo de salida
+    const char* outputFile = "progfile.dat"; // Valor por defecto para el archivo de salida
 
     // Si se especifica solo un argumento adicional, se asume que es el archivo de entrada
     if (argc == 2) {
