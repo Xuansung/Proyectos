@@ -16,7 +16,7 @@ module memprog(input  wire        clk,
 endmodule
 
 module memdat(input wire clk, input wire m_wr, input wire [15:0] a, input wire [15:0] wd, output wire [15:0] rd); // Modulo para la memoria de datos
-  reg [15:0] mem[0:511];
+  reg [15:0] mem[0:127];
 
   initial begin
     $readmemb("C:/Users/albxb/Downloads/programas/Verilog/proyecto1/datos.dat", mem); //Lee los datos cargados por primera vez
