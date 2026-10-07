@@ -1,0 +1,17 @@
+{
+  "editor.detectIndentation": false,
+  "editor.formatOnPaste": true,
+
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.rulers": [79],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 79,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+  },
+  "[css][c][c++][cpp]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "xaver.clang-format",
+  },
+}
