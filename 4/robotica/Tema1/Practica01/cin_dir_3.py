@@ -99,16 +99,17 @@ if len(sys.argv) != nvar+1:
 p=[float(i) for i in sys.argv[1:nvar+1]]
 
 # Parámetros D-H:
-#        1    2    3   4   51    52
-d  = [p[0],   0,   0,   0,   0,   0,    0]
-th = [   0,p[1],  0,    0, p[4],-p[4],  0]
-a  = [   0,   5,p[2],   0,   2,   2,    2]
-al = [   0,   0,p[3],  90,   0,   0,    0]
+#        1    2    2'   3      4      51      52   ef
+d  = [p[0],   0,   0,p[2],     0,      0,      0,  0]
+th = [   0,p[1], -90,   0,90+p[3],90+p[4],90-p[4], 90]
+a  = [   0,   5,   0,   0,     0,      2,      2,  2]
+al = [   0,   0, -90,   0,    90,      0,      0,  0]
 
 # Orígenes para cada articulación
 o00=[0,0,0,1]
 o11=[0,0,0,1]
 o22=[0,0,0,1]
+o2p2p=[0,0,0,1]
 o33=[0,0,0,1]
 o44=[0,0,0,1]
 o55=[0,0,0,1]
@@ -117,13 +118,15 @@ oef=[0,0,0,1]
 # Cálculo matrices transformación
 T01=matriz_T(d[0],th[0],a[0],al[0])
 T12=matriz_T(d[1],th[1],a[1],al[1])
-T23=matriz_T(d[2],th[2],a[2],al[2])
-T34=matriz_T(d[3],th[3],a[3],al[3])
-T451=matriz_T(d[4],th[4],a[4],al[4])
-T452=matriz_T(d[5],th[5],a[5],al[5])
-TEF =matriz_T(d[6],th[6],a[6],al[6])
+T22p=matriz_T(d[2],th[2],a[2],al[2])
+T2p3=matriz_T(d[3],th[3],a[3],al[3])
+T34=matriz_T(d[4],th[4],a[4],al[4])
+T451=matriz_T(d[5],th[5],a[5],al[5])
+T452=matriz_T(d[6],th[6],a[6],al[6])
+TEF =matriz_T(d[7],th[7],a[7],al[7])
 T02=np.dot(T01,T12)
-T03=np.dot(T02,T23)
+T02p=np.dot(T02,T22p)
+T03=np.dot(T02p,T2p3)
 T04=np.dot(T03,T34)
 T051=np.dot(T04,T451)
 T052=np.dot(T04,T452)
@@ -132,12 +135,13 @@ T0EF=np.dot(T04,TEF)
 # Transformación de cada articulación
 o10 =np.dot(T01, o11).tolist()
 o20 =np.dot(T02, o22).tolist()
+o2p0 =np.dot(T02p, o2p2p).tolist()
 o30 =np.dot(T03, o33).tolist()
 o40 =np.dot(T04, o44).tolist()
 o51 =np.dot(T051,o55).tolist()
 o52 =np.dot(T052,o55).tolist()
 ef =np.dot(T0EF,oef).tolist()
 # Mostrar resultado de la cinemática directa
-muestra_origenes([o00,o10,o20,o30,o40,[[o51],[o52]]],ef)
-muestra_robot   ([o00,o10,o20,o30,o40,[[o51],[o52]]],ef)
+muestra_origenes([o00,o10,o20,o2p0,o30,o40,[[o51],[o52]]], ef)
+muestra_robot   ([o00,o10,o20,o2p0,o30,o40,[[o51],[o52]]], ef)
 input()
