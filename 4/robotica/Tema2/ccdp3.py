@@ -61,6 +61,9 @@ def cin_dir(th,a):
 # Cálculo de la cinemática inversa de forma iterativa por el método CCD
 
 # valores articulares arbitrarios para la cinemática directa inicial
+TYPE=[0,0,0]
+MIN=[0,0,0]
+MAX=[0.5,0.5,0.5]
 th=[0.,0.,0.]
 a =[5.,5.,5.]
 L = sum(a) # variable para representación gráfica
@@ -94,8 +97,15 @@ while (dist > EPSILON and abs(prev-dist) > EPSILON/100.):
     vec2 = np.array(o[-1]) - np.array(o[j])
     cos_theta = np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
     var_ang = np.arccos(cos_theta)
-    # signo: producto vectorial z = x2*y1 - y2*x1
-    if vec2[0]*vec1[1] - vec2[1]*vec1[0] < 0:
+    #desp = 
+    #if(o[3] == 1): 
+    #else:
+    if (var_ang < MIN[j]):
+          var_ang = MIN[j]
+    elif (var_ang > MAX[j]):
+          var_ang = MAX[j]
+    # sentido: producto vectorial z = x2*y1 - y2*x1
+    if (vec2[0]*vec1[1] - vec2[1]*vec1[0]) < 0:
         var_ang = -var_ang
     th[j] += var_ang
     O.append(cin_dir(th,a))
