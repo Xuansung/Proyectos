@@ -100,21 +100,21 @@ while (dist > EPSILON and abs(prev-dist) > EPSILON/100.):
       vec_d = np.array([cos(w),sin(w)])
       distancia = np.dot(vec_d,np.array(objetivo) - np.array(o[-1]))
       a[j] += distancia
-      if (distancia < MIN[j]):
-            distancia = MIN[j]
-      elif (distancia > MAX[j]):
-            distancia = MAX[j]
+      if (a[j] < MIN[j]):
+            a[j] = MIN[j]
+      elif (a[j] > MAX[j]):
+            a[j] = MAX[j]
     else:
       cos_theta = np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
       var_ang = np.arccos(cos_theta)
-    if (var_ang < MIN[j]):
-          var_ang = MIN[j]
-    elif (var_ang > MAX[j]):
-          var_ang = MAX[j]
-    # sentido: producto vectorial z = x2*y1 - y2*x1
-    if (vec2[0]*vec1[1] - vec2[1]*vec1[0]) < 0:
+      # sentido: producto vectorial z = x2*y1 - y2*x1
+      if (vec2[0]*vec1[1] - vec2[1]*vec1[0]) < 0:
         var_ang = -var_ang
-    th[j] += var_ang
+      th[j] += var_ang
+      if (th[j] < MIN[j]):
+        th[j] = MIN[j]
+      elif (th[j] > MAX[j]):
+        th[j] = MAX[j]
     O.append(cin_dir(th,a))
   dist = np.linalg.norm(np.subtract(objetivo,O[-1][-1]))
   print ("\n- Iteracion " + str(iteracion) + ':')
