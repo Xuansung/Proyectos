@@ -96,12 +96,14 @@ while (dist > EPSILON and abs(prev-dist) > EPSILON/100.):
     vec1 = np.array(objetivo) - np.array(o[j])
     vec2 = np.array(o[-1]) - np.array(o[j])
     if(TYPE[j] == 1):
-      w = 0.5
-      distancia = np.linalg.norm(np.subtract(objetivo,O[-1][-1]))
+      w = sum(th[:j+1])
       vec_d = np.array([cos(w),sin(w)])
-      v_uni_d = vec_d / np.linalg.norm(vec_d)
-      Li = v_uni_d * distancia 
-      #a[j] += Li
+      distancia = np.dot(vec_d,np.array(objetivo) - np.array(o[-1]))
+      a[j] += distancia
+      if (distancia < MIN[j]):
+            distancia = MIN[j]
+      elif (distancia > MAX[j]):
+            distancia = MAX[j]
     else:
       cos_theta = np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
       var_ang = np.arccos(cos_theta)
