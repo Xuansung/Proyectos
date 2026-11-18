@@ -62,8 +62,8 @@ def cin_dir(th,a):
 
 # valores articulares arbitrarios para la cinemática directa inicial
 TYPE=[0,1,0]
-MIN=[0,0,0]
-MAX=[0.5,5,0.5]
+MIN=[-5,0,-5]
+MAX=[5,10,5]
 th=[0.,0.,0.]
 a =[5.,5.,5.]
 L = sum(a) # variable para representación gráfica
@@ -80,7 +80,6 @@ O=cin_dir(th,a)
  # Calculamos la posicion inicial
 print ("- Posicion inicial:")
 muestra_origenes(O)
-
 dist = float("inf")
 prev = 0.
 iteracion = 1
@@ -105,7 +104,10 @@ while (dist > EPSILON and abs(prev-dist) > EPSILON/100.):
       elif (a[j] > MAX[j]):
             a[j] = MAX[j]
     else:
-      cos_theta = np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))
+      n1, n2 = np.linalg.norm(vec1), np.linalg.norm(vec2)
+      if n1 < 1e-9 or n2 < 1e-9:
+        continue  # sin incremento en esta articulación
+      cos_theta = np.dot(vec1, vec2) / (n1 * n2)
       var_ang = np.arccos(cos_theta)
       # sentido: producto vectorial z = x2*y1 - y2*x1
       if (vec2[0]*vec1[1] - vec2[1]*vec1[0]) < 0:
